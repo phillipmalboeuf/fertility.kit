@@ -1,0 +1,39 @@
+$body_font: "Times Now", serif;
+$heading_font: "Antique Legacy", sans-serif;
+$mono_font: monospace;
+
+$dark: #000;
+$light: #FFF;
+$muted: rgba(0, 0, 0, 0.25);
+$grey: #E2E2E2;
+
+$purple: #E8CDF1;
+$purple_dark: #CCA7E0;
+$peach: #FFD9C3;
+$peach_dark: #FFAC7E;
+$blue: #C3DFFF;
+$blue_dark: #89B6EA;
+$green: #CDE8B5;
+$green_mid: #8AC287;
+$green_dark: #6AAC66;
+
+$base: 16px;
+
+$s-3: var(--step--3);
+$s-2: var(--step--2);
+$s-1: var(--step--1);
+$s0: var(--step-0);
+$s1: var(--step-1);
+$s2: var(--step-2);
+$s3: var(--step-3);
+$s4: var(--step-4);
+$s5: var(--step-5);
+$s6: var(--step-6);
+$s7: var(--step-7);
+
+$radius: $s-1;
+$max: 1440px;
+
+$mobile: 888px;
+
+$number_of_columns: 12;
