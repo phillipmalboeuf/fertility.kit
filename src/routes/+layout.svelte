@@ -24,13 +24,17 @@
 
 <div class="{$page.route.id?.replaceAll('/', '-').replaceAll('[', '').replaceAll(']', '')} {$page.url.pathname.replaceAll('/', '-')}" style:--color={$page.data.page?.fields.color}>
 	<Dialog />
-	<Header navigation={data.navigation} /> 
+	<Header navigation={data.navigations['navigation']} /> 
 
 	<main>
 		{@render children()}
 	</main>
 
-	<Footer navigation={data.navigation} />
+	<Footer navigation={data.navigations['navigation']}
+		footer={data.navigations['footer']}
+		social={data.navigations['social']}
+		work={data.navigations['work']}
+		disclaimers={data.navigations['disclaimers']} />
 </div>
 
 <style lang="scss">

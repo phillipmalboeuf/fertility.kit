@@ -100,11 +100,15 @@ export function isTypeSlider<Modifiers extends ChainModifiers, Locales extends L
 export interface TypeTextFields {
     title?: EntryFieldTypes.Symbol;
     id?: EntryFieldTypes.Symbol;
+    subtitle?: EntryFieldTypes.Symbol;
     collapsable?: EntryFieldTypes.Boolean;
     rounded?: EntryFieldTypes.Boolean;
     media?: EntryFieldTypes.Array<EntryFieldTypes.AssetLink>;
+    mobileMedia?: EntryFieldTypes.Array<EntryFieldTypes.AssetLink>;
     body?: EntryFieldTypes.RichText;
     more?: EntryFieldTypes.Array<EntryFieldTypes.EntryLink<TypePlaylistSkeleton | TypeSliderSkeleton | TypeTextSkeleton>>;
+    navigation?: EntryFieldTypes.EntryLink<TypeNavigationSkeleton>;
+    links?: EntryFieldTypes.Array<EntryFieldTypes.EntryLink<TypeLinkSkeleton>>;
 }
 
 export type TypeTextSkeleton = EntrySkeletonType<TypeTextFields, "text">;

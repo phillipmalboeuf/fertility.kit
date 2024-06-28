@@ -67,6 +67,12 @@ h1, h2, h3, h4, h5, h6,
 		font-weight: normal;
 		font-size: 0.75em;
 	}
+
+	&.h--alt {
+		font-family: $body_font;
+		font-weight: normal;
+		letter-spacing: 0;
+	}
 }
 
 h1,
@@ -424,7 +430,7 @@ video {
 }
 
 .padded {
-  padding: $s1;
+  padding: $s3;
 }
 
 	.padded--tight {

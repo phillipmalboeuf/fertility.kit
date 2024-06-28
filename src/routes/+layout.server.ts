@@ -1,17 +1,24 @@
 
 import type { TypeNavigationSkeleton } from '$lib/clients/content_types'
 import { content } from '$lib/clients/contentful'
-import type { Tag } from 'contentful'
+import type { Entry, Tag } from 'contentful'
 
 export const load = async ({ request, cookies }) => {
 
-  const [navigation, tags] = await Promise.all([
-    content.getEntries<TypeNavigationSkeleton>({ content_type: 'navigation', select: ['sys.id', 'fields.id', 'fields.links'], include: 2, "fields.id": "navigation", locale: 'en-US' }),
+  const [navigations, tags] = await Promise.all([
+    content.getEntries<TypeNavigationSkeleton>({ content_type: 'navigation', select: ['sys.id', 'fields.title', 'fields.id', 'fields.links'], include: 2, locale: 'en-US' }),
     content.getTags()
   ])
 
   return {
-    navigation: navigation.items[0],
+    navigations: {
+      ...navigations.items.reduce((navs, nav) => {
+        return {
+          ...navs,
+          [nav.fields.id]: nav
+        }
+      }, {} as {[id: string]: Entry<TypeNavigationSkeleton, 'WITHOUT_UNRESOLVABLE_LINKS'>}),
+    },
     tags: tags.items.reduce((ts, tag) => {
       return {
         ...ts,

@@ -16,9 +16,6 @@ export const load = (async ({ locals, url, params }) => {
 
   const page = pages.items[0]
 
-  console.log(url.searchParams.get('tag'))
-  console.log(page)
-
   return {
     page: url.searchParams.get('tag')
       ? {
