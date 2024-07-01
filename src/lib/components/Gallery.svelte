@@ -10,6 +10,7 @@
   
   import { openDialog } from '$lib/helpers'
   import Playlist from './Playlist.svelte';
+  import Slider from './Slider.svelte';
 
   let { item, preview }: {
     item: Entry<TypeGallerySkeleton, "WITHOUT_UNRESOLVABLE_LINKS">
@@ -30,7 +31,7 @@
   // })).sort((a, b) => a[1] - b[1]))
 </script>
 
-<section id={item.fields.id}>
+<section id={item.fields.id} class:slider={preview}>
   <!-- <h2>{item.fields.title}</h2> -->
 
   <!-- {#if item.fields.body}
@@ -58,7 +59,7 @@
 
   {#snippet summary(i: Entry<TypePlaylistSkeleton | TypeTextSkeleton, "WITHOUT_UNRESOLVABLE_LINKS">)}
   <summary class="flex flex--gapped flex--spaced">
-  <h6 class="col col--6of12">{i.metadata.tags.map(t => $page.data.tags[t.sys.id].name).join(', ')}</h6>
+  <h6 class="col col--6of12">{i.metadata.tags.length ? i.metadata.tags.map(t => $page.data.tags[t.sys.id].name).join(', ') : 'Tag'}</h6>
   <u>Show</u>
   {#if isTypeText(i) && i.fields.media?.length}
   <figure class="col col--3of12">
@@ -69,28 +70,30 @@
 </summary>
   {/snippet}
 
-  <ol class="list--nostyle flex flex--gapped" class:flex--column={!preview}>
-    <!-- {#each item.fields.content.filter(i => !$page.url.searchParams.get('tag') || i.metadata.tags.find(t => t.sys.id === $page.url.searchParams.get('tag'))) as i} -->
-    {#each item.fields.content as i}
-    <li>
-      {#if preview}
-      <a href="/explore/{i.fields.id}" class="padded">
-        {@render summary(i)}
-      </a>
-      {:else}
-      <details class="padded">
-        {@render summary(i)}
-        
-        {#if isTypeText(i)}
-        <Text item={i} />
-        {:else if isTypePlaylist(i)}
-        <Playlist item={i} />
+  <Slider disabled={!preview} slidesPerView={2.25}>
+    <ol class="list--nostyle {preview ? 'slider__container' : 'flex flex--gapped flex--column'}">
+      <!-- {#each item.fields.content.filter(i => !$page.url.searchParams.get('tag') || i.metadata.tags.find(t => t.sys.id === $page.url.searchParams.get('tag'))) as i} -->
+      {#each item.fields.content as i}
+      <li class="slide">
+        {#if preview}
+        <a href="/explore/{i.fields.id}" class="padded">
+          {@render summary(i)}
+        </a>
+        {:else}
+        <details class="padded">
+          {@render summary(i)}
+          
+          {#if isTypeText(i)}
+          <Text item={i} />
+          {:else if isTypePlaylist(i)}
+          <Playlist item={i} />
+          {/if}
+        </details>
         {/if}
-      </details>
-      {/if}
-    </li>
-    {/each}
-  </ol>
+      </li>
+      {/each}
+    </ol>
+  </Slider>
 </section>
 
 <style lang="scss">
@@ -128,6 +131,7 @@
     }
 
     ol {
+
       li {
         width: 100%;
         border: 1px solid;
@@ -135,6 +139,20 @@
 
         a {
           display: block;
+        }
+      }
+    }
+
+    &.slider {
+      margin: 0 calc($s3 * -1);
+      
+      // :global(.slider) {
+      //   overflow: visible !important;
+      // }
+
+      ol {
+        li {
+          margin-left: $s0;
         }
       }
     }

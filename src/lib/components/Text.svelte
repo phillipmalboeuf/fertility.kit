@@ -6,6 +6,7 @@
   import Rich from './Rich.svelte'
   import Media from './Media.svelte'
   import Link from './Link.svelte';
+  import Star from './Star.svelte';
 
   let { item, full }: {
     item: Entry<TypeTextSkeleton, "WITHOUT_UNRESOLVABLE_LINKS">
@@ -27,7 +28,14 @@
   <hr>
   {/if}
 
-  {#if item.fields.title}<h2>{item.fields.title}</h2>{/if}
+  {#if item.fields.title}
+  {#if item.fields.title.includes(' * ')}
+  {@const split = item.fields.title.split(' * ')}
+  <h6>{split[0]} <Star /> {split.length > 1 && split[1]}</h6>
+  {:else}
+  <h2>{item.fields.title}</h2>
+  {/if}
+  {/if}
   {#if item.fields.body}
   <main class:full>
     <Rich body={item.fields.body} />
@@ -66,6 +74,7 @@
   section {
 
     h2,
+    h6,
     figure {
       margin-bottom: $s1;
     }

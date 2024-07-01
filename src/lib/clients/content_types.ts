@@ -80,6 +80,7 @@ export function isTypeNavigation<Modifiers extends ChainModifiers, Locales exten
 export interface TypePageFields {
     title?: EntryFieldTypes.Symbol;
     id: EntryFieldTypes.Symbol;
+    step?: EntryFieldTypes.Symbol<"1" | "2" | "3" | "4">;
     color?: EntryFieldTypes.Symbol;
     content?: EntryFieldTypes.Array<EntryFieldTypes.EntryLink<TypeGallerySkeleton | TypeListSkeleton | TypeNavigationSkeleton | TypePlaylistSkeleton | TypeTextSkeleton>>;
 }
