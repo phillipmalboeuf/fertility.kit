@@ -9,8 +9,8 @@
   import Media from './Media.svelte'
   
   import { openDialog } from '$lib/helpers'
-  import Playlist from './Playlist.svelte';
-  import Slider from './Slider.svelte';
+  import Playlist from './Playlist.svelte'
+  import Slider from './Slider.svelte'
 
   let { item, preview }: {
     item: Entry<TypeGallerySkeleton, "WITHOUT_UNRESOLVABLE_LINKS">
@@ -41,20 +41,24 @@
   {/if} -->
 
   {#if !preview}
-  <nav>
-    <a class="h6" href="?" onclick={(e) => {
-      if ($page.state.href?.includes('/explore')) {
-        openDialog(e)
-      }
-    }}>All</a>
-    {#each Object.values($page.data.tags) as tag}
-    <a class="h6" href="?tag={tag.sys.id}" onclick={(e) => {
-      if ($page.state.href?.includes('/explore')) {
-        openDialog(e)
-      }
-    }}>{tag.name}</a>
-    {/each}
-  </nav>
+  <details class="padded">
+    <summary>Explore</summary>
+    <nav class="flex flex--tight_gapped flex--column">
+      <h6>Filter by Category</h6>
+      <a href="?" onclick={(e) => {
+        if ($page.state.href?.includes('/explore')) {
+          openDialog(e)
+        }
+      }}>All</a>
+      {#each Object.values($page.data.tags) as tag}
+      <a href="?tag={tag.sys.id}" class:active={$page.url.search === `?tag=${tag.sys.id}` || $page.state.href.includes(`?tag=${tag.sys.id}`)} onclick={(e) => {
+        if ($page.state.href?.includes('/explore')) {
+          openDialog(e)
+        }
+      }}>{tag.name}</a>
+      {/each}
+    </nav>
+  </details>
   {/if}
 
   {#snippet summary(i: Entry<TypePlaylistSkeleton | TypeTextSkeleton, "WITHOUT_UNRESOLVABLE_LINKS">)}
@@ -117,6 +121,24 @@
   }
 
   section {
+
+    nav {
+      font-family: $heading_font;
+
+      h6 {
+        opacity: 0.4;
+      }
+
+      a {
+        border-bottom: 1.5px solid transparent;
+
+        &:hover,
+        &:focus,
+        &.active {
+          border-color: currentColor;
+        }
+      }
+    }
     
     details {
       &[open] {
@@ -144,7 +166,7 @@
     }
 
     &.slider {
-      margin: 0 calc($s3 * -1);
+      margin-right: calc($s3 * -1);
       
       // :global(.slider) {
       //   overflow: visible !important;
@@ -152,7 +174,7 @@
 
       ol {
         li {
-          margin-left: $s0;
+          margin-right: $s0;
         }
       }
     }
