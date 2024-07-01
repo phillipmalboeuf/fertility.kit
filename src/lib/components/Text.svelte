@@ -13,13 +13,18 @@
   } = $props()
 </script>
 
-<section id={item.fields.id}>
+<section id={item.fields.id} class:boxed={item.fields.boxed}>
   {#if item.fields.media?.length}
   {#each item.fields.media as media, i}
   <figure>
     <Media {media} mobileMedia={item.fields.mobileMedia?.length >= i - 1 ? item.fields.mobileMedia[i] : undefined} />
   </figure>
   {/each}
+  {/if}
+
+  {#if item.fields.subtitle}
+  <h6>{item.fields.subtitle}</h6>
+  <hr>
   {/if}
 
   {#if item.fields.title}<h2>{item.fields.title}</h2>{/if}

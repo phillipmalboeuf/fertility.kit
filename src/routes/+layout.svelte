@@ -43,8 +43,12 @@
 	}
 
 	main {
-		width: 75vw;
-		margin-left: auto;
+		// width: 75vw;
+		// margin-left: auto;
 		min-height: 100vh;
+
+		:global(> section) {
+			padding-left: 25vw;
+		}
 	}
 </style>

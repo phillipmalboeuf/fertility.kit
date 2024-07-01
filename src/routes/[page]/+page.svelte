@@ -1,7 +1,8 @@
 <script lang="ts">
-  import { isTypeText, isTypeGallery } from '$lib/clients/content_types'
+  import { isTypeText, isTypeGallery, isTypeList } from '$lib/clients/content_types'
   import Text from '$lib/components/Text.svelte'
   import Gallery from '$lib/components/Gallery.svelte'
+  import List from '$lib/components/List.svelte'
 
   import type { PageData } from './$types'
   let { data }: { data: PageData } = $props()
@@ -9,12 +10,42 @@
 
 {#if data.page.fields.content}
 {#each data.page.fields.content as item, i}
-<section class="padded">
-  {#if isTypeText(item)}
-  <Text {item} full={['disclaimer'].includes(data.page.fields.id)} />
-  {:else if isTypeGallery(item)}
-  <Gallery {item} />
-  {/if}
+<section class:boxed={(isTypeText(item) || isTypeList(item)) && item.fields.boxed} style:background-color={(isTypeText(item) || isTypeList(item)) ? item.fields.color : isTypeGallery(item) ? '#fff' : undefined}>
+  <div class="padded">
+    {#if isTypeText(item)}
+    <Text {item} full={['disclaimer'].includes(data.page.fields.id)} />
+    {:else if isTypeList(item)}
+    <List {item} full={['disclaimer'].includes(data.page.fields.id)} />
+    {:else if isTypeGallery(item)}
+    <Gallery {item} preview={i !== 0} />
+    {/if}
+  </div>
 </section>
 {/each}
 {/if}
+
+<style lang="scss">
+  section {
+
+    &.boxed {
+      border-top: 1px solid;
+      // border-bottom: 1px solid;
+
+      > div {
+        border-left: 1px solid;
+      }
+
+      + .boxed {
+        border-top: none;
+
+        > div {
+          border-top: 1px solid;
+        }
+      }
+
+      &:not(:has(+ .boxed)) {
+        border-bottom: 1px solid;
+      }
+    }
+  }
+</style>

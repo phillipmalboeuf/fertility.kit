@@ -1,5 +1,20 @@
 import type { ChainModifiers, Entry, EntryFieldTypes, EntrySkeletonType, LocaleCode } from "contentful";
 
+export interface TypeAdvisorFields {
+    name: EntryFieldTypes.Symbol;
+    id?: EntryFieldTypes.Symbol;
+    position?: EntryFieldTypes.Symbol;
+    certifications?: EntryFieldTypes.Symbol;
+    link?: EntryFieldTypes.Symbol;
+}
+
+export type TypeAdvisorSkeleton = EntrySkeletonType<TypeAdvisorFields, "advisor">;
+export type TypeAdvisor<Modifiers extends ChainModifiers, Locales extends LocaleCode = LocaleCode> = Entry<TypeAdvisorSkeleton, Modifiers, Locales>;
+
+export function isTypeAdvisor<Modifiers extends ChainModifiers, Locales extends LocaleCode>(entry: Entry<EntrySkeletonType, Modifiers, Locales>): entry is TypeAdvisor<Modifiers, Locales> {
+    return entry.sys.contentType.sys.id === 'advisor'
+}
+
 export interface TypeGalleryFields {
     title?: EntryFieldTypes.Symbol;
     id?: EntryFieldTypes.Symbol;
@@ -30,6 +45,25 @@ export function isTypeLink<Modifiers extends ChainModifiers, Locales extends Loc
     return entry.sys.contentType.sys.id === 'link'
 }
 
+export interface TypeListFields {
+    title?: EntryFieldTypes.Symbol;
+    id?: EntryFieldTypes.Symbol;
+    subtitle?: EntryFieldTypes.Symbol;
+    color?: EntryFieldTypes.Symbol;
+    boxed?: EntryFieldTypes.Boolean;
+    media?: EntryFieldTypes.Array<EntryFieldTypes.AssetLink>;
+    mobileMedia?: EntryFieldTypes.Array<EntryFieldTypes.AssetLink>;
+    items?: EntryFieldTypes.Array<EntryFieldTypes.EntryLink<TypeAdvisorSkeleton | TypePlaylistSkeleton | TypeTextSkeleton>>;
+    navigation?: EntryFieldTypes.EntryLink<TypeNavigationSkeleton>;
+}
+
+export type TypeListSkeleton = EntrySkeletonType<TypeListFields, "list">;
+export type TypeList<Modifiers extends ChainModifiers, Locales extends LocaleCode = LocaleCode> = Entry<TypeListSkeleton, Modifiers, Locales>;
+
+export function isTypeList<Modifiers extends ChainModifiers, Locales extends LocaleCode>(entry: Entry<EntrySkeletonType, Modifiers, Locales>): entry is TypeList<Modifiers, Locales> {
+    return entry.sys.contentType.sys.id === 'list'
+}
+
 export interface TypeNavigationFields {
     title?: EntryFieldTypes.Symbol;
     id: EntryFieldTypes.Symbol;
@@ -47,7 +81,7 @@ export interface TypePageFields {
     title?: EntryFieldTypes.Symbol;
     id: EntryFieldTypes.Symbol;
     color?: EntryFieldTypes.Symbol;
-    content?: EntryFieldTypes.Array<EntryFieldTypes.EntryLink<TypeGallerySkeleton | TypeNavigationSkeleton | TypePlaylistSkeleton | TypeTextSkeleton>>;
+    content?: EntryFieldTypes.Array<EntryFieldTypes.EntryLink<TypeGallerySkeleton | TypeListSkeleton | TypeNavigationSkeleton | TypePlaylistSkeleton | TypeTextSkeleton>>;
 }
 
 export type TypePageSkeleton = EntrySkeletonType<TypePageFields, "page">;
@@ -59,6 +93,8 @@ export function isTypePage<Modifiers extends ChainModifiers, Locales extends Loc
 
 export interface TypePlaylistFields {
     title?: EntryFieldTypes.Symbol;
+    id?: EntryFieldTypes.Symbol;
+    boxed?: EntryFieldTypes.Boolean;
     audioFiles?: EntryFieldTypes.Array<EntryFieldTypes.AssetLink>;
     linkLabel?: EntryFieldTypes.Symbol;
     link?: EntryFieldTypes.Symbol;
@@ -101,14 +137,15 @@ export interface TypeTextFields {
     title?: EntryFieldTypes.Symbol;
     id?: EntryFieldTypes.Symbol;
     subtitle?: EntryFieldTypes.Symbol;
+    color?: EntryFieldTypes.Symbol;
     collapsable?: EntryFieldTypes.Boolean;
-    rounded?: EntryFieldTypes.Boolean;
+    boxed?: EntryFieldTypes.Boolean;
     media?: EntryFieldTypes.Array<EntryFieldTypes.AssetLink>;
     mobileMedia?: EntryFieldTypes.Array<EntryFieldTypes.AssetLink>;
     body?: EntryFieldTypes.RichText;
     more?: EntryFieldTypes.Array<EntryFieldTypes.EntryLink<TypePlaylistSkeleton | TypeSliderSkeleton | TypeTextSkeleton>>;
-    navigation?: EntryFieldTypes.EntryLink<TypeNavigationSkeleton>;
     links?: EntryFieldTypes.Array<EntryFieldTypes.EntryLink<TypeLinkSkeleton>>;
+    navigation?: EntryFieldTypes.EntryLink<TypeNavigationSkeleton>;
 }
 
 export type TypeTextSkeleton = EntrySkeletonType<TypeTextFields, "text">;
