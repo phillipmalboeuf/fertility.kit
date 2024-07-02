@@ -15,6 +15,8 @@ export const load = (async ({ locals, url, params }) => {
   }
 
   return {
-    page: pages.items[0]
+    page: pages.items[0],
+    tag: url.searchParams.get('tag'),
+    format: url.searchParams.get('format')
   }
 })

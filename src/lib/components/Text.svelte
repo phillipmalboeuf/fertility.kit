@@ -5,12 +5,13 @@
   
   import Rich from './Rich.svelte'
   import Media from './Media.svelte'
-  import Link from './Link.svelte';
-  import Star from './Star.svelte';
+  import Link from './Link.svelte'
+  import Star from './Star.svelte'
 
-  let { item, full }: {
+  let { item, full, small }: {
     item: Entry<TypeTextSkeleton, "WITHOUT_UNRESOLVABLE_LINKS">
     full?: boolean
+    small?: boolean
   } = $props()
 </script>
 
@@ -33,7 +34,11 @@
   {@const split = item.fields.title.split(' * ')}
   <h6>{split[0]} <Star /> {split.length > 1 && split[1]}</h6>
   {:else}
+  {#if small}
+  <h5>{item.fields.title}</h5>
+  {:else}
   <h2>{item.fields.title}</h2>
+  {/if}
   {/if}
   {/if}
   {#if item.fields.body}
@@ -43,7 +48,7 @@
   {/if}
 
   {#snippet icon()}
-  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <svg width="16" height="16" viewBox="0 0 16 16">
   <path d="M7.66365 5.35547L10.7447 8.43649L7.66365 11.5175L7.24401 11.1015L9.61459 8.73097H4.65625V8.142H9.61459L7.24401 5.77142L7.66365 5.35547Z" fill="currentColor"/>
   <circle cx="7.65015" cy="8.34985" r="7.36754" transform="rotate(-90 7.65015 8.34985)" stroke="currentColor" stroke-width="0.565217"/>
   </svg>
@@ -74,6 +79,7 @@
   section {
 
     h2,
+    h5,
     h6,
     figure {
       margin-bottom: $s1;

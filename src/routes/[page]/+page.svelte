@@ -17,7 +17,7 @@
     {:else if isTypeList(item)}
     <List {item} full={['disclaimer'].includes(data.page.fields.id)} />
     {:else if isTypeGallery(item)}
-    <Gallery {item} preview={i !== 0} />
+    <Gallery {item} preview={i !== 0} currentTag={data.tag} format={data.format} />
     {/if}
   </div>
 </section>

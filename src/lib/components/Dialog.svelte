@@ -15,23 +15,15 @@
 
 {#if $page.state.data}
 <NoScroll />
-<button class="button--none close" transition:fade={{ duration: 333 }}
-  onclick={close}
->
-  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <path d="M1 15L15 1" stroke="black"/>
-  <path d="M1 0.999999L15 15" stroke="black"/>
-  </svg>
+<button class="button--none close" out:fade={{ duration: 333 }} onclick={close}>
+  <svg width="16" height="16" viewBox="0 0 16 16"><path d="M1 15L15 1" stroke="currentColor"/><path d="M1 0.999999L15 15" stroke="currentColor"/></svg>
 </button>
 <dialog transition:fly={{ opacity: 1, x: '110%', duration: 666 }}>
   {#if $page.state.href.includes(`/explore`)}
   <svelte:component this={ExplorePage} data={$page.state.data} />
   {/if}
 </dialog>
-<button class="back" transition:fade={{ duration: 333 }}
-  onclick={close}
->
-</button>
+<button class="back" out:fade={{ duration: 333 }} onclick={close}></button>
 {/if}
 
 <style lang="scss">

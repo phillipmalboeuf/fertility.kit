@@ -30,6 +30,8 @@ export const load = (async ({ locals, url, params }) => {
             }
           } : i)
         }
-      } : page 
+      } : page,
+    tag: url.searchParams.get('tag'),
+    format: url.searchParams.get('format')
   }
 })

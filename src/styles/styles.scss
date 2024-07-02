@@ -185,7 +185,7 @@ button,
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	gap: $s-1;
+	gap: $s-2;
 
 	&.button--tight {
 		padding: ($s-2) ($s-1);
@@ -319,8 +319,12 @@ input[type=checkbox] {
 svg {
 	fill: none;
 
-	path:not([stroke]) {
-		fill: currentColor;
+	path,
+	circle,
+	rect {
+		&:not([stroke]) {
+			fill: currentColor;
+		}
 	}
 
 	line {
@@ -416,6 +420,12 @@ img,
 video {
 	display: block;
 	width: 100%;
+}
+
+strong,
+.strong {
+	font-weight: 500;
+	font-family: $heading_font;
 }
 
 
