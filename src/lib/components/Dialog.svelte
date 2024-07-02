@@ -8,6 +8,7 @@
   import { browser } from '$app/environment'
   
   import ExplorePage from '../../routes/explore/+page.svelte'
+  import ExploreItemPage from '../../routes/explore/[id]/+page.svelte'
   import NoScroll from './NoScroll.svelte'
 
   const close = () => pushState($page.url.href, {})
@@ -15,12 +16,19 @@
 
 {#if $page.state.data}
 <NoScroll />
-<button class="button--none close" out:fade={{ duration: 333 }} onclick={close}>
+<button class="button--none close" out:fade={{ duration: 333 }} onclick={close} >
   <svg width="16" height="16" viewBox="0 0 16 16"><path d="M1 15L15 1" stroke="currentColor"/><path d="M1 0.999999L15 15" stroke="currentColor"/></svg>
 </button>
+
 <dialog transition:fly={{ opacity: 1, x: '110%', duration: 666 }}>
   {#if $page.state.href.includes(`/explore`)}
   <svelte:component this={ExplorePage} data={$page.state.data} />
+  {/if}
+
+  {#if $page.state.href.includes(`/explore/`)}
+  <dialog transition:fly={{ opacity: 1, x: '-110%', duration: 666 }}>
+    <svelte:component this={ExploreItemPage} data={$page.state.data} />
+  </dialog>
   {/if}
 </dialog>
 <button class="back" out:fade={{ duration: 333 }} onclick={close}></button>
@@ -49,6 +57,17 @@
 
     // &.wide {
     //   max-width: none;
+    // }
+
+    // > article {
+    //   position: absolute;
+    //   z-index: 4;
+    //   top: 0;
+    //   left: 0;
+    //   width: 100%;
+    //   height: 100%;
+    //   overflow-y: auto;
+    //   background-color: $light;
     // }
   }
 

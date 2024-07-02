@@ -85,7 +85,7 @@
       {#each item.fields.content as i}
       <li class="slide">
         {#if preview || format !== 'feed'}
-        <a href="/explore/{i.fields.id}" class="padded">
+        <a href="/explore/{i.fields.id}" class="padded" onclick={dialogClick}>
           <div class="flex flex--gapped flex--spaced">
             <h6 class="col col--6of12">{i.metadata.tags.length ? i.metadata.tags.map(t => $page.data.tags[t.sys.id].name).join(', ') : 'Tag'}</h6>
             <u>Show More</u>
