@@ -48,7 +48,7 @@
 		min-height: 100vh;
 
 		:global(> section) {
-			padding-left: 25vw;
+			padding-left: calc(25% - ($s4 / 2));
 		}
 	}
 </style>

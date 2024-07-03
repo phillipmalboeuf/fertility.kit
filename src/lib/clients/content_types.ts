@@ -97,6 +97,7 @@ export interface TypePlaylistFields {
     id?: EntryFieldTypes.Symbol;
     boxed?: EntryFieldTypes.Boolean;
     audioFiles?: EntryFieldTypes.Array<EntryFieldTypes.AssetLink>;
+    media?: EntryFieldTypes.Array<EntryFieldTypes.AssetLink>;
     linkLabel?: EntryFieldTypes.Symbol;
     link?: EntryFieldTypes.Symbol;
 }

@@ -11,7 +11,7 @@
   } = $props()
 </script>
 
-<header class="padded flex flex--gapped flex--column">
+<header class="padded--thick flex flex--gapped flex--column">
   <a href="/">
     <Logo step={$page.data.page?.fields.step} />
   </a>

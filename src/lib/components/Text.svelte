@@ -32,7 +32,7 @@
   {#if item.fields.title}
   {#if item.fields.title.includes(' * ')}
   {@const split = item.fields.title.split(' * ')}
-  <h6>{split[0]} <Star /> {split.length > 1 && split[1]}</h6>
+  <h6 class="split">{split[0]} <Star /> {split.length > 1 && split[1]}</h6>
   {:else}
   {#if small}
   <h5>{item.fields.title}</h5>
@@ -80,9 +80,26 @@
 
     h2,
     h5,
-    h6,
-    figure {
-      margin-bottom: $s1;
+    h6:not(:has(+ hr)),
+    figure,
+    hr {
+      margin-bottom: $s5;
+    }
+
+    &.boxed {
+      h6.split {
+        margin: calc($s7 * -1) calc($s5 * -1) $s5;
+        padding: calc($s0) calc($s5);
+        border-bottom: 1px solid;
+      }
+
+      figure + h6.split {
+        margin-top: calc($s4 * -1);
+      }
+
+      figure:has(+ h6.split) {
+        margin-top: calc($s2 * -1);
+      }
     }
 
     main {
@@ -103,6 +120,11 @@
 
     nav {
       align-items: flex-end;
+      margin-top: $s4;
+
+      h6 {
+        margin-bottom: 0;
+      }
 
       :global(a) {
         display: flex;

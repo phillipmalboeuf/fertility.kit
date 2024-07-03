@@ -133,7 +133,7 @@
     position: relative;
 
     &.dialog {
-      margin: calc($s3 * -1);
+      margin: calc($s7 * -1) calc($s5 * -1);
     }
 
     &:not(.dialog):not(.slider) {

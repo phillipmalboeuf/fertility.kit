@@ -13,7 +13,7 @@
   } = $props()
 </script>
 
-<footer class="padded flex flex--thick_gapped">
+<footer class="padded--thick flex flex--thick_gapped">
   <div class="col col--3of12">
     <a href="/">
       <Logo />
@@ -33,10 +33,10 @@
       {/each}
     </nav>
   </div>
-  <div class="col col--4of12">
-    <nav class="flex flex--tight_gapped flex--column">
+  <div class="col col--3of12">
+    <nav class="flex flex--tight_gapped flex--column work">
       {#if work.fields.title}
-      <h5 class="h--alt">{work.fields.title}</h5>
+      <h6 class="h--alt">{work.fields.title}</h6>
       {/if}
       {#each work.fields.links as link}
       <Link {link} />
@@ -60,13 +60,31 @@
 
     nav {
       font-family: $heading_font;
+      font-size: $s-1;
 
       &:not(.disclaimers) {  
         font-weight: bold;
       }
 
       &.disclaimers {
-        font-size: $s-1;
+        font-size: $s-2;
+
+        :global(a) {
+          opacity: 0.4;
+
+          &:hover,
+          &:focus {
+            opacity: 1;
+          }
+        }
+      }
+
+      &.work {
+        
+
+        :global(a) {
+          border-bottom: 1.5px solid;
+        }
       }
     }
   }

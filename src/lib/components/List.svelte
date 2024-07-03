@@ -16,11 +16,15 @@
 
 <section id={item.fields.id} class:boxed={item.fields.boxed}>
   {#if item.fields.title}
-  {#if item.fields.media?.length}
-  <h5>{item.fields.title}</h5>
+  {#if item.fields.media?.length || item.fields.items?.find(i => isTypeAdvisor(i))}
+  <h6>{item.fields.title}</h6>
   {:else}
   <h2>{item.fields.title}</h2>
   {/if}
+  {/if}
+
+  {#if item.fields.subtitle}
+  <h6>{item.fields.subtitle}</h6>
   {/if}
 
   <main class="flex flex--gapped">
@@ -31,17 +35,21 @@
     </figure>
     {/each}
     {/if}
-    <ol class:col--8of12={item.fields.media?.length} class="col list--nostyle flex flex--gapped">
+    <ol class:col--8of12={item.fields.media?.length} class="col list--nostyle flex flex--thick_gapped">
       {#each item.fields.items as i}
-      <li class="col col--6of12" class:col--12of12={isTypeAdvisor(i)}>
+      <li class="col col--4of12" class:col--6of12={item.fields.media?.length} class:col--12of12={isTypeAdvisor(i)}>
         {#if isTypeText(i)}
+        {#if item.fields.media?.length}
         <h6>{i.fields.title}</h6>
+        {:else}
+        <h4>{i.fields.title}</h4>
+        {/if}
         {#if i.fields.body}
         <Rich body={i.fields.body} />
         {/if}
         {:else if isTypeAdvisor(i)}
-        <a href={i.fields.link} class="flex flex--gapped" target="_blank" rel="external">
-          <h3 class="col col--6of12">{i.fields.name}</h3>
+        <a href={i.fields.link} class="flex flex--gapped flex--bottom advisor" target="_blank" rel="external">
+          <h3 class="col col--6of12 h1 h--alt">{i.fields.name}</h3>
           <h6 class="col col--6of12">{i.fields.position} <Star /> {i.fields.certifications}</h6>
         </a>
         {/if}
@@ -78,9 +86,17 @@
 <style lang="scss">
   section {
 
-    h2,
-    figure {
-      margin-bottom: $s1;
+    > h2,
+    > h6 {
+      margin-bottom: $s5;
+    }
+
+    &.boxed {
+      > h6 {
+        margin: calc($s7 * -1) calc($s5 * -1) $s5;
+        padding: calc($s0) calc($s5);
+        border-bottom: 1px solid;
+      }
     }
 
     main {
@@ -96,10 +112,29 @@
 
     ol {
       li {
+
+        &:not(.col--6of12):not(.col--12of12) {
+          border-top: 4px solid;
+          padding-top: $s1;
+        }
+
+        .advisor {
+          padding: $s-3 0;
+          border-bottom: 1px solid;
+
+          h6 {
+            margin-bottom: $s-1;
+          }
+
+          :global(svg) {
+            margin: 0 $s-3;
+          }
+        }
       }
     }
 
     nav {
+      margin-top: $s1;
       align-items: flex-end;
 
       :global(a) {
