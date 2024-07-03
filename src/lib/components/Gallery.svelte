@@ -37,7 +37,7 @@
   let dialog = $derived($page.state.href?.includes('/explore'))
 
   const dialogClick: MouseEventHandler<HTMLAnchorElement> = (e) => {
-    if (dialog) {
+    if (dialog || preview) {
       openDialog(e)
     }
   }
@@ -87,14 +87,14 @@
         {#if preview || format !== 'feed'}
         <a href="/explore/{i.fields.id}" class="padded" onclick={dialogClick}>
           <div class="flex flex--gapped flex--spaced">
-            <h6 class="col col--6of12">{i.metadata.tags.length ? i.metadata.tags.map(t => $page.data.tags[t.sys.id].name).join(', ') : 'Tag'}</h6>
-            <u>Show More</u>
-            {#if isTypeText(i) && i.fields.media?.length}
+            <h6 class="col col--8of12">{i.metadata.tags.length ? i.metadata.tags.map(t => $page.data.tags[t.sys.id].name).join(', ') : 'Tag'}</h6>
+            <u class="col col--4of12">Show More</u>
+            {#if i.fields.media?.length}
             <figure class="col col--3of12">
-              <Media media={i.fields.media[0]} width={200} ar={1} />
+              <Media media={i.fields.media[0]} width={200} ar={1} rounded />
             </figure>
             {/if}
-            <h5 class="col col--9of12"><strong>{i.fields.title}</strong></h5>
+            <h5 class="col col--9of12" class:col--12of12={!i.fields.media?.length}><strong>{i.fields.title}</strong></h5>
           </div>
         </a>
         {:else}
@@ -220,6 +220,7 @@
         a {
           display: block;
           font-family: $heading_font;
+          padding-top: $s2;
 
           u,
           h6 {
@@ -227,8 +228,16 @@
             font-size: $s-1;
           }
 
+          u {
+            text-align: right;
+          }
+
           h5 {
             font-size: $s0;
+          }
+
+          figure + h5 {
+            padding-left: $s2;
           }
         }
       }

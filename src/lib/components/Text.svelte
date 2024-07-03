@@ -86,6 +86,10 @@
       margin-bottom: $s5;
     }
 
+    h2 {
+      padding-right: $s7;
+    }
+
     &.boxed {
       h6.split {
         margin: calc($s7 * -1) calc($s5 * -1) $s5;

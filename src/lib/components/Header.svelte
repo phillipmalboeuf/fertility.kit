@@ -30,7 +30,7 @@
     width: 25vw;
 
     > a {
-      margin-bottom: $s1;
+      margin-bottom: $s0;
     }
 
     nav {

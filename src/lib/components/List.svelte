@@ -35,7 +35,7 @@
     </figure>
     {/each}
     {/if}
-    <ol class:col--8of12={item.fields.media?.length} class="col list--nostyle flex flex--thick_gapped">
+    <ol class:col--8of12={item.fields.media?.length} class="col list--nostyle flex" class:flex--thick_gapped={!item.fields.items?.find(i => isTypeAdvisor(i))} class:flex--gapped={item.fields.items?.find(i => isTypeAdvisor(i))}>
       {#each item.fields.items as i}
       <li class="col col--4of12" class:col--6of12={item.fields.media?.length} class:col--12of12={isTypeAdvisor(i)}>
         {#if isTypeText(i)}

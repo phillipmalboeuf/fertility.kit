@@ -14,6 +14,14 @@
 </script>
 
 <section id={item.fields.id} class:boxed={item.fields.boxed}>
+  {#if item.fields.media?.length}
+  {#each item.fields.media as media, i}
+  <figure>
+    <Media {media} />
+  </figure>
+  {/each}
+  {/if}
+  
   <ol class="list--nostyle">
     {#each item.fields.audioFiles as media}
     <li>
@@ -24,6 +32,10 @@
 </section>
 
 <style lang="scss">
+  figure {
+    margin-bottom: $s3;
+  }
+  
   ol {
     li {
       :global(button) {
