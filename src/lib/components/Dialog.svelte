@@ -18,7 +18,7 @@
 
 {#if $page.state.data}
 <NoScroll />
-<button class="button--none close" out:fade={{ duration: 333 }} onclick={close} >
+<button class="button--none close" transition:fade={{ duration: 333 }} onclick={close} >
   <svg width="16" height="16" viewBox="0 0 16 16"><path d="M1 15L15 1" stroke="currentColor"/><path d="M1 0.999999L15 15" stroke="currentColor"/></svg>
 </button>
 
@@ -37,7 +37,7 @@
   </dialog>
   {/if}
 </dialog>
-<button class="back" out:fade={{ duration: 333 }} onclick={close}></button>
+<button class="back" transition:fade={{ duration: 333 }} onclick={close}></button>
 {/if}
 
 <style lang="scss">
