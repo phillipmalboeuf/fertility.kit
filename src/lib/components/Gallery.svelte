@@ -43,7 +43,7 @@
   }
 </script>
 
-<section id={item.fields.id} class:slider={preview} class:dialog>
+<section id={item.fields.id} class:slider={preview} class:dialog={!preview && dialog}>
   <!-- <h2>{item.fields.title}</h2> -->
 
   <!-- {#if item.fields.body}

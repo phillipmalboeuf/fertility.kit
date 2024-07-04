@@ -26,12 +26,15 @@
   ]
 
   onMount(() => {
-    const off = on(figure, 'emblaInit', event => {
-      // @ts-ignore
-      slider = event.detail
-      slider.on("select", () => active = slider.selectedScrollSnap())
-    })
-    
+    if (figure) {
+      const off = on(figure, 'emblaInit', event => {
+        // @ts-ignore
+        slider = event.detail
+        slider.on("select", () => active = slider.selectedScrollSnap())
+      })
+      
+      return off()
+    }
   })
 
   onDestroy(() => {

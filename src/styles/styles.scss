@@ -82,6 +82,10 @@ h1,
 	// @media (max-width: $mobile) {
   //   font-size: $mobile_base * $mobile_scale * 3;
   // }
+
+	&.h--alt {
+		letter-spacing: -0.01em;
+	}
 }
 
 h2,

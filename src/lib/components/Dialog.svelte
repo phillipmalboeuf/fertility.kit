@@ -12,6 +12,8 @@
   import NoScroll from './NoScroll.svelte'
 
   const close = () => pushState($page.url.href, {})
+
+  let flying = $state(false)
 </script>
 
 {#if $page.state.data}
@@ -20,7 +22,11 @@
   <svg width="16" height="16" viewBox="0 0 16 16"><path d="M1 15L15 1" stroke="currentColor"/><path d="M1 0.999999L15 15" stroke="currentColor"/></svg>
 </button>
 
-<dialog transition:fly={{ opacity: 1, x: '110%', duration: 666 }}>
+<dialog transition:fly={{ opacity: 1, x: '110%', duration: 666 }} class:flying
+  onintrostart={() => flying = true}
+  onintroend={() => flying = false}
+  onoutrostart={() => flying = true}
+  onoutroend={() => flying = false}>
   {#if $page.state.href.includes(`/explore`)}
   <svelte:component this={ExplorePage} data={$page.state.data} />
   {/if}
@@ -54,6 +60,15 @@
 
     color: currentColor;
     background-color: $light;
+
+    &.flying {
+      dialog {
+        position: absolute;
+        top: 0;
+        right: 0;
+        transform: none !important;
+      }
+    }
 
     // &.wide {
     //   max-width: none;

@@ -27,7 +27,7 @@
   <h6>{item.fields.subtitle}</h6>
   {/if}
 
-  <main class="flex flex--gapped">
+  <main class="flex flex--gapped flex--spaced">
     {#if item.fields.media?.length}
     {#each item.fields.media as media, i}
     <figure class="col col--4of12">
@@ -35,7 +35,7 @@
     </figure>
     {/each}
     {/if}
-    <ol class:col--8of12={item.fields.media?.length} class="col list--nostyle flex" class:flex--thick_gapped={!item.fields.items?.find(i => isTypeAdvisor(i))} class:flex--gapped={item.fields.items?.find(i => isTypeAdvisor(i))}>
+    <ol class:col--6of12={item.fields.media?.length} class="col list--nostyle flex" class:flex--thick_gapped={!item.fields.items?.find(i => isTypeAdvisor(i))} class:flex--gapped={item.fields.items?.find(i => isTypeAdvisor(i))}>
       {#each item.fields.items as i}
       <li class="col col--4of12" class:col--6of12={item.fields.media?.length} class:col--12of12={isTypeAdvisor(i)}>
         {#if isTypeText(i)}
@@ -46,6 +46,8 @@
         {/if}
         {#if i.fields.body}
         <Rich body={i.fields.body} />
+        {:else}
+        <p></p>
         {/if}
         {:else if isTypeAdvisor(i)}
         <a href={i.fields.link} class="flex flex--gapped flex--bottom advisor" target="_blank" rel="external">
@@ -116,6 +118,15 @@
         &:not(.col--6of12):not(.col--12of12) {
           border-top: 4px solid;
           padding-top: $s1;
+        }
+
+        &.col--6of12 {
+          border-bottom: 1px solid;
+          padding-bottom: $s3;
+
+          :global(p) {
+            margin: $s0 0;
+          }
         }
 
         .advisor {
