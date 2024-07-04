@@ -40,6 +40,7 @@
 <style lang="scss">
 	div {
 		background-color: var(--color);
+		transition: background-color 666ms;
 	}
 
 	main {

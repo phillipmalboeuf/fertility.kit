@@ -26,6 +26,7 @@
 
 <style lang="scss">
   section {
+    transition: background-color 666ms;
 
     &.boxed {
       border-top: 1px solid;
