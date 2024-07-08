@@ -24,7 +24,8 @@
 
 <div class="{$page.route.id?.replaceAll('/', '-').replaceAll('[', '').replaceAll(']', '')} {$page.url.pathname.replaceAll('/', '-')}" style:--color={$page.data.page?.fields.color}>
 	<Dialog />
-	<Header navigation={data.navigations['navigation']} /> 
+	<Header navigation={data.navigations['navigation']}
+		work={data.navigations['work']} /> 
 
 	<main>
 		{@render children()}
@@ -48,8 +49,10 @@
 		// margin-left: auto;
 		min-height: 100vh;
 
-		:global(> section) {
-			padding-left: calc(25% - ($s4 / 2));
+		@media (min-width: $mobile) {
+			:global(> section) {
+				padding-left: calc(25% - ($s4 / 2));
+			}
 		}
 	}
 </style>

@@ -42,6 +42,10 @@ Back</a>
   section {
     &.dialog {
       margin: calc($s3 * -1);
+
+      @media (max-width: $mobile) {
+        margin: calc($s0 * -1);
+      }
     }
   }
   

@@ -14,37 +14,37 @@
 </script>
 
 <footer class="padded--thick flex flex--thick_gapped">
-  <div class="col col--3of12">
+  <div class="col col--3of12 col--mobile--12of12">
     <a href="/">
       <Logo />
     </a>
   </div>
-  <div class="col col--2of12">
+  <div class="col col--2of12 col--mobile--12of12">
     <nav class="flex flex--column">
       {#each footer.fields.links as link}
       <Link {link} />
       {/each}
     </nav>
   </div>
-  <div class="col col--2of12">
+  <div class="col col--2of12 col--mobile--12of12">
     <nav class="flex flex--column">
       {#each social.fields.links as link}
       <Link {link} />
       {/each}
     </nav>
   </div>
-  <div class="col col--3of12">
+  <div class="col col--3of12 col--mobile--12of12">
     <nav class="flex flex--tight_gapped flex--column work">
       {#if work.fields.title}
-      <h6 class="h--alt">{work.fields.title}</h6>
+      <h6 class="h--alt">{@html work.fields.title}</h6>
       {/if}
       {#each work.fields.links as link}
       <Link {link} />
       {/each}
     </nav>
   </div>
-  <div class="col col--3of12"></div>
-  <div class="col col--4of12">
+  <div class="col col--3of12 col--mobile--12of12"></div>
+  <div class="col col--4of12 col--mobile--12of12">
     <nav class="flex flex--thick_gapped disclaimers">
       {#each disclaimers.fields.links as link}
       <Link {link} className='col col--6of12' />
@@ -60,7 +60,14 @@
 
     nav {
       font-family: $heading_font;
-      font-size: $s-1;
+
+      @media (min-width: $mobile) {
+        font-size: $s-1;
+      }
+
+      :global(a) {
+        padding: 0.2em 0;
+      }
 
       &:not(.disclaimers) {  
         font-weight: bold;

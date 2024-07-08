@@ -32,7 +32,7 @@
   {#if item.fields.title}
   {#if item.fields.title.includes(' * ')}
   {@const split = item.fields.title.split(' * ')}
-  <h6 class="split">{split[0]} <Star /> {split.length > 1 && split[1]}</h6>
+  <h6 class="split">{split[0]} <Star /> <br>{split.length > 1 && split[1]}</h6>
   {:else}
   {#if small}
   <h5>{item.fields.title}</h5>
@@ -84,10 +84,28 @@
     figure,
     hr {
       margin-bottom: $s5;
+
+      @media (max-width: $mobile) {
+        margin-bottom: $s3;
+      }
     }
 
     h2 {
-      padding-right: $s7;
+      @media (min-width: $mobile) {
+        padding-right: $s7;
+      }
+    }
+
+    h6.split {
+      :global(svg) {
+        margin: 0 $s-3;
+      }
+
+      @media (min-width: $mobile) {
+        br {
+          display: none;
+        }
+      }
     }
 
     &.boxed {
@@ -95,22 +113,37 @@
         margin: calc($s7 * -1) calc($s5 * -1) $s5;
         padding: calc($s0) calc($s5);
         border-bottom: 1px solid;
+
+        @media (max-width: $mobile) {
+          margin: calc($s2 * -1) calc($s1 * -1) $s1;
+          padding: calc($s0) calc($s1);
+        }
       }
 
       figure + h6.split {
         margin-top: calc($s4 * -1);
+
+        @media (max-width: $mobile) {
+          margin-top: calc($s2 * -1);
+        }
       }
 
       figure:has(+ h6.split) {
         margin-top: calc($s2 * -1);
+
+        @media (max-width: $mobile) {
+          margin-top: 0;
+        }
       }
     }
 
     main {
 
       &:not(.full) {
-        column-count: 2;
-        column-gap: $s3;
+        @media (min-width: $mobile) {
+          column-count: 2;
+          column-gap: $s3;
+        }
       }
 
       :global(p) {
@@ -141,6 +174,10 @@
 
         font-family: $heading_font;
         line-height: 1;
+
+        @media (max-width: $mobile) {
+          width: 100%;
+        }
       }
     }
   }

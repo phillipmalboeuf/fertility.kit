@@ -101,6 +101,10 @@
     :global(.slide) {
       flex: 0 0 var(--view);
       min-width: 0;
+
+      @media (max-width: $mobile) {
+        flex: 0 0 90%;
+      }
     }
 } 
 

@@ -9,5 +9,3 @@
     document.documentElement.classList.remove('noscroll')
   })
 </script>
-
-<span></span>

@@ -30,14 +30,14 @@
   <main class="flex flex--gapped flex--spaced">
     {#if item.fields.media?.length}
     {#each item.fields.media as media, i}
-    <figure class="col col--4of12">
+    <figure class="col col--4of12 col--mobile--12of12">
       <Media {media} mobileMedia={item.fields.mobileMedia?.length >= i - 1 ? item.fields.mobileMedia[i] : undefined} />
     </figure>
     {/each}
     {/if}
-    <ol class:col--6of12={item.fields.media?.length} class="col list--nostyle flex" class:flex--thick_gapped={!item.fields.items?.find(i => isTypeAdvisor(i))} class:flex--gapped={item.fields.items?.find(i => isTypeAdvisor(i))}>
+    <ol class:col--6of12={item.fields.media?.length} class="col col--mobile--12of12 list--nostyle flex" class:flex--thick_gapped={!item.fields.items?.find(i => isTypeAdvisor(i))} class:flex--gapped={item.fields.items?.find(i => isTypeAdvisor(i))}>
       {#each item.fields.items as i}
-      <li class="col col--4of12" class:col--6of12={item.fields.media?.length} class:col--12of12={isTypeAdvisor(i)}>
+      <li class="col col--4of12 col--mobile--12of12" class:col--6of12={item.fields.media?.length} class:col--12of12={isTypeAdvisor(i)}>
         {#if isTypeText(i)}
         {#if item.fields.media?.length}
         <h6>{i.fields.title}</h6>
@@ -51,8 +51,8 @@
         {/if}
         {:else if isTypeAdvisor(i)}
         <a href={i.fields.link} class="flex flex--gapped flex--bottom advisor" target="_blank" rel="external">
-          <h3 class="col col--6of12 h1 h--alt">{i.fields.name}</h3>
-          <h6 class="col col--6of12">{i.fields.position} <Star /> {i.fields.certifications}</h6>
+          <h3 class="col col--6of12 col--mobile--12of12 h1 h--alt">{i.fields.name}</h3>
+          <h6 class="col col--6of12 col--mobile--12of12">{i.fields.position} <Star /> <br>{i.fields.certifications}</h6>
         </a>
         {/if}
       </li>
@@ -98,6 +98,11 @@
         margin: calc($s7 * -1) calc($s5 * -1) $s5;
         padding: calc($s0) calc($s5);
         border-bottom: 1px solid;
+
+        @media (max-width: $mobile) {
+          padding: calc($s0) calc($s1);
+          margin: calc($s2 * -1) calc($s1 * -1) $s1;
+        }
       }
     }
 
@@ -108,6 +113,12 @@
 
         &:first-child {
           margin-top: 0;
+        }
+      }
+
+      @media (max-width: $mobile) {
+        figure {
+          margin-bottom: $s1;
         }
       }
     }
@@ -124,6 +135,14 @@
           border-bottom: 1px solid;
           padding-bottom: $s3;
 
+          @media (max-width: $mobile) {
+            padding-bottom: 0;
+
+            &:last-of-type {
+              border-bottom: none;
+            }
+          }
+
           :global(p) {
             margin: $s0 0;
           }
@@ -135,6 +154,16 @@
 
           h6 {
             margin-bottom: $s-1;
+
+            @media (min-width: $mobile) {
+              br {
+                display: none;
+              }
+            }
+
+            @media (max-width: $mobile) {
+              font-size: $s-1;
+            }
           }
 
           :global(svg) {

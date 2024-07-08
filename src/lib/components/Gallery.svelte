@@ -134,6 +134,16 @@
 
     &.dialog {
       margin: calc($s7 * -1) calc($s5 * -1);
+
+      @media (max-width: $mobile) {
+        margin: calc($s2 * -1) calc($s1 * -1);
+      }
+    }
+
+    &.slider {
+      // @media (max-width: $mobile) {
+      //   display: none;
+      // }
     }
 
     &:not(.dialog):not(.slider) {
@@ -236,8 +246,10 @@
             font-size: $s0;
           }
 
-          figure + h5 {
-            padding-left: $s2;
+          @media (min-width: $mobile) {
+            figure + h5 {
+              padding-left: $s2;
+            }
           }
         }
       }
@@ -259,6 +271,10 @@
 
     &.slider {
       margin-right: calc($s3 * -1);
+
+      @media (max-width: $mobile) {
+        margin-right: calc($s0 * -1);
+      }
       
       // :global(.slider) {
       //   overflow: visible !important;

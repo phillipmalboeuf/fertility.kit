@@ -32,8 +32,10 @@
       border-top: 1px solid;
       // border-bottom: 1px solid;
 
-      > div {
-        border-left: 1px solid;
+      @media (min-width: $mobile) {
+        > div {
+          border-left: 1px solid;
+        }
       }
 
       + .boxed {
