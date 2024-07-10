@@ -55,7 +55,8 @@
   {#if !preview}
   <details>
     <summary>
-      Explore
+      <span class="flex flex--middle">Explore <svg width="6" height="4" viewBox="0 0 6 4"><path d="M1 1L3 3L5 1" stroke="currentColor"/></svg></span>
+
 
       <aside class="buttons flex flex--middle">
         <a href="?format=feed{currentTag ? `&tag=${currentTag}` : ''}" class:active={format === 'feed'} class="button button--none" onclick={dialogClick}>
@@ -167,11 +168,26 @@
       summary {
         font-family: $heading_font;
         cursor: pointer;
+        
+        span {
+          gap: $s-3;
+
+          svg {
+            transition: transform 333ms;
+            transform: rotate(0);
+          }
+        }
       }
       
       &[open] {
         summary {
           margin-bottom: $s1;
+
+          span {
+            svg {
+              transform: rotate(-180deg);
+            }
+          }
         }
       }
     }
