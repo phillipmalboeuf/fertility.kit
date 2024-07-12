@@ -42,7 +42,7 @@
   {/if}
   {/if}
   {#if item.fields.body}
-  <main class:full>
+  <main class:full class="columns-{item.fields.columns || 2}">
     <Rich body={item.fields.body} />
   </main>
   {/if}
@@ -139,10 +139,22 @@
 
     main {
 
-      &:not(.full) {
+      &:not(.full):not(.columns-1) {
         @media (min-width: $mobile) {
           column-count: 2;
           column-gap: $s3;
+          
+          &.columns-3 {
+            column-count: 3;
+            column-gap: $s3;
+          }
+
+          :global(*) {
+            break-inside: avoid-column;
+          }
+          :global(hr:has(+ hr)) {
+            break-after: column;
+          }
         }
       }
 

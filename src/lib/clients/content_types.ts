@@ -144,6 +144,7 @@ export interface TypeTextFields {
     boxed?: EntryFieldTypes.Boolean;
     media?: EntryFieldTypes.Array<EntryFieldTypes.AssetLink>;
     mobileMedia?: EntryFieldTypes.Array<EntryFieldTypes.AssetLink>;
+    columns?: EntryFieldTypes.Symbol<"1" | "2" | "3">;
     body?: EntryFieldTypes.RichText;
     more?: EntryFieldTypes.Array<EntryFieldTypes.EntryLink<TypePlaylistSkeleton | TypeSliderSkeleton | TypeTextSkeleton>>;
     links?: EntryFieldTypes.Array<EntryFieldTypes.EntryLink<TypeLinkSkeleton>>;
