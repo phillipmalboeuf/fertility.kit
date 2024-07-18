@@ -13,13 +13,16 @@
   } = $props()
 
   let menu = $state(false)
+  let scrollY = $state<number>(0)
 </script>
+
+<svelte:window bind:scrollY />
 
 {#if menu}
 <NoScroll />
 {/if}
 
-<header class="padded--thick flex flex--gapped">
+<header class="padded--thick flex flex--gapped" class:scrolled={scrollY > 0}>
   <a href="/" onclick={() => menu = false}>
     <Logo step={$page.data.page?.fields.step} />
   </a>
@@ -70,6 +73,12 @@
 
       justify-content: space-between;
       align-items: center;
+      transition: box-shadow 333ms;
+
+      &.scrolled {
+        background-color: var(--color);
+        box-shadow: 0 4px 4px $muted;
+      }
     }
 
     > a {
@@ -107,7 +116,7 @@
 
       @media (max-width: $mobile) {
         &:has(input:checked) + nav {
-          transform: translateX(0);
+          transform: translateY(0);
         }
       }
     }
@@ -162,7 +171,7 @@
         background-color: $light;
 
         transition: transform 666ms;
-        transform: translateX(100%);
+        transform: translateY(-100%);
 
         > :global(a) {
           font-size: $s3;
