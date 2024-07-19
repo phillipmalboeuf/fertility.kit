@@ -156,6 +156,12 @@
             break-after: column;
           }
         }
+
+        @media (max-width: $mobile) {
+          :global(hr + hr) {
+            display: none;
+          }
+        }
       }
 
       :global(p) {
