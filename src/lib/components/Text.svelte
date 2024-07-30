@@ -91,6 +91,10 @@
       }
     }
 
+    hr {
+      margin-top: $s0;
+    }
+
     h2 {
       @media (min-width: $mobile) {
         padding-right: $s7;
