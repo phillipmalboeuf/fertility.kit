@@ -67,6 +67,12 @@
 
       :global(a) {
         padding: 0.2em 0;
+        transition: opacity 333ms;
+
+        &:hover,
+        &:focus {
+          opacity: 0.5;
+        }
       }
 
       &:not(.disclaimers) {  

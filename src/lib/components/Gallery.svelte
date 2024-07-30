@@ -91,11 +91,11 @@
             <h6 class="col col--8of12">{i.metadata.tags.length ? i.metadata.tags.map(t => $page.data.tags[t.sys.id].name).join(', ') : 'Tag'}</h6>
             <u class="col col--4of12">Show More</u>
             {#if i.fields.media?.length}
-            <figure class="col col--3of12">
+            <figure class="col">
               <Media media={i.fields.media[0]} width={200} ar={1} rounded />
             </figure>
             {/if}
-            <h5 class="col col--9of12" class:col--12of12={!i.fields.media?.length}><strong>{i.fields.title}</strong></h5>
+            <h5 class="col" class:col--12of12={!i.fields.media?.length}><strong>{i.fields.title}</strong></h5>
           </div>
         </a>
         {:else}
@@ -262,9 +262,19 @@
             font-size: $s0;
           }
 
+          figure {
+            width: 74px;
+            margin-top: $s0;
+          }
+
+          figure + h5 {
+            flex: 1;
+            margin-top: $s0;
+          }
+
           @media (min-width: $mobile) {
             figure + h5 {
-              padding-left: $s2;
+              padding-left: $s1;
             }
           }
         }

@@ -37,7 +37,7 @@
     {/if}
     <ol class:col--6of12={item.fields.media?.length} class="col col--mobile--12of12 list--nostyle flex" class:flex--thick_gapped={!item.fields.items?.find(i => isTypeAdvisor(i))} class:flex--gapped={item.fields.items?.find(i => isTypeAdvisor(i))}>
       {#each item.fields.items as i}
-      <li class="col col--4of12 col--mobile--12of12" class:col--6of12={item.fields.media?.length} class:col--12of12={isTypeAdvisor(i)}>
+      <li class="col col--4of12 col--mobile--12of12" class:col--6of12={item.fields.media?.length} class:col--12of12={isTypeAdvisor(i)} class:mid={isTypeText(i) && i.fields.bigger}>
         {#if isTypeText(i)}
         {#if item.fields.media?.length}
         <h6>{i.fields.title}</h6>
@@ -76,6 +76,7 @@
   <nav class="flex flex--thick_gapped">
     {#if item.fields.navigation.fields.title}
     <h6 class="col col--5of12 col--mobile--12of12">{item.fields.navigation.fields.title}</h6>
+    <div class="col col--1of12"></div>
     {/if}
 
     {#each item.fields.navigation.fields.links as link}
@@ -186,6 +187,7 @@
         border-bottom: 1px solid;
         padding: $s-3 0;
 
+        font-weight: 600;
         font-family: $heading_font;
         line-height: 1;
       }

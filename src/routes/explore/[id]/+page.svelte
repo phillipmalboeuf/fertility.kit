@@ -62,8 +62,14 @@ Back</a>
 
   article {
     h6 {
+      font-weight: normal;
       font-size: $s-1;
       margin-bottom: $s0;
+    }
+
+    :global(img),
+    :global(video) {
+      border-radius: $radius;
     }
   }
 </style>

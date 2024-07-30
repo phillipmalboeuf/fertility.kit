@@ -15,7 +15,7 @@
   } = $props()
 </script>
 
-<section id={item.fields.id} class:boxed={item.fields.boxed}>
+<section id={item.fields.id} class:boxed={item.fields.boxed} >
   {#if item.fields.media?.length}
   {#each item.fields.media as media, i}
   <figure>
@@ -42,7 +42,7 @@
   {/if}
   {/if}
   {#if item.fields.body}
-  <main class:full class="columns-{item.fields.columns || 2}">
+  <main class:full class:mid={item.fields.bigger} class="columns-{item.fields.columns || 2}">
     <Rich body={item.fields.body} />
   </main>
   {/if}
@@ -66,6 +66,7 @@
   <nav class="flex flex--thick_gapped">
     {#if item.fields.navigation.fields.title}
     <h6 class="col col--5of12 col--mobile--12of12">{item.fields.navigation.fields.title}</h6>
+    <div class="col col--1of12"></div>
     {/if}
 
     {#each item.fields.navigation.fields.links as link}
@@ -190,6 +191,7 @@
         border-bottom: 1px solid;
         padding: $s-3 0;
 
+        font-weight: 600;
         font-family: $heading_font;
         line-height: 1;
 

@@ -142,6 +142,7 @@ export interface TypeTextFields {
     color?: EntryFieldTypes.Symbol;
     collapsable?: EntryFieldTypes.Boolean;
     boxed?: EntryFieldTypes.Boolean;
+    bigger?: EntryFieldTypes.Boolean;
     media?: EntryFieldTypes.Array<EntryFieldTypes.AssetLink>;
     mobileMedia?: EntryFieldTypes.Array<EntryFieldTypes.AssetLink>;
     columns?: EntryFieldTypes.Symbol<"1" | "2" | "3">;
