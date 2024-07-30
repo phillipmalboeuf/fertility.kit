@@ -49,17 +49,23 @@
     left: auto;
     // transform: translateX(-50%);
     height: 100vh;
+    overflow-x: hidden;
     overflow-y: auto;
     width: 90vw;
     max-width: $max * 0.333;
     max-height: calc(100vh - (($s0 + $s5) * 2));
-    overflow: auto;
     z-index: 2000;
     border: none;
     border-radius: $s0;
 
     color: currentColor;
     background-color: $light;
+    will-change: transform;
+
+    dialog {
+      top: 0;
+      right: 0;
+    }
 
     &.flying {
       dialog {

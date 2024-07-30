@@ -134,7 +134,7 @@
       font-weight: bold;
 
       :global(a) {
-        margin-bottom: $s0;
+        margin-bottom: $s-2;
         border-bottom: 1.5px solid transparent;
 
         &:focus,

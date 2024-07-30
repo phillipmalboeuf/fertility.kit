@@ -29,7 +29,7 @@
     transition: background-color 666ms;
 
     &.boxed {
-      border-top: 1px solid;
+      // border-top: 1px solid;
       // border-bottom: 1px solid;
 
       @media (min-width: $mobile) {
@@ -47,7 +47,7 @@
       }
 
       &:not(:has(+ .boxed)) {
-        border-bottom: 1px solid;
+        // border-bottom: 1px solid;
       }
     }
   }
