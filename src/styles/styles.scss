@@ -125,7 +125,7 @@ h4,
 
 h5,
 .h5 {
-	font-size: $s2;
+	font-size: $s1;
 	line-height: 1.1;
 
 	// @media (max-width: $mobile) {
@@ -362,7 +362,7 @@ hr {
 	border: none;
 	height: 1px;
 	background-color: currentColor;
-	margin: ($base*0.666) 0;
+	margin: 0 0 $s0;
 }
 
 table {
