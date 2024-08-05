@@ -129,12 +129,12 @@
         margin-top: calc($s4 * -1);
 
         @media (max-width: $mobile) {
-          margin-top: calc($s2 * -1);
+          margin-top: calc(($s2 * -1) + 2px);
         }
       }
 
       figure:has(+ h6.split) {
-        margin-top: calc($s2 * -1);
+        margin-top: calc(($s2 * -1) + 2px);
 
         @media (max-width: $mobile) {
           margin-top: 0;

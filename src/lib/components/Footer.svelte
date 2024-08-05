@@ -57,6 +57,14 @@
   footer {
     border-top: 2px solid;
     background-color: $light;
+    padding-top: $s5;
+    padding-bottom: $s3;
+
+    :global(svg) {
+      @media (max-width: $mobile) {
+        width: 115px;
+      }
+    }
 
     nav {
       font-family: $heading_font;
@@ -99,6 +107,10 @@
           border-bottom: 1.5px solid;
         }
       }
+    }
+
+    div:last-child {
+      margin-top: $s2;
     }
   }
 </style>

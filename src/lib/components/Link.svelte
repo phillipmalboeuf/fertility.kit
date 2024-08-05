@@ -12,9 +12,20 @@
   } = $props()
 </script>
 
-<a class={className} href={link.fields.destination} {...link.fields.external && { target: '_blank', rel: 'external' }}
+<a class={className} class:anchor={link.fields.destination?.includes('#')} href={link.fields.destination} {...link.fields.external && { target: '_blank', rel: 'external' }}
   onclick={e => {
     if (link.fields.destination.includes('/explore')) {
       openDialog(e)
     }
   }}>{link.fields.label}{#if more}{@render more()}{/if}</a>
+
+
+<style lang="scss">
+  a {
+    &.anchor {
+      :global(svg) {
+        transform: rotate(90deg);
+      }
+    }
+  }
+</style>

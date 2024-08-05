@@ -10,7 +10,7 @@
 
 {#if data.page.fields.content}
 {#each data.page.fields.content as item, i}
-<section class:boxed={(isTypeText(item) || isTypeList(item)) && item.fields.boxed} style:background-color={(isTypeText(item) || isTypeList(item)) ? item.fields.color : isTypeGallery(item) ? '#fff' : undefined}>
+<section class:testis={data.page.fields.id === 'testimonials'} class:boxed={(isTypeText(item) || isTypeList(item)) && item.fields.boxed} style:background-color={(isTypeText(item) || isTypeList(item)) ? item.fields.color : isTypeGallery(item) ? '#fff' : undefined}>
   <div class="padded--thick">
     {#if isTypeText(item)}
     <Text {item} full={['disclaimer'].includes(data.page.fields.id)} />
@@ -48,6 +48,12 @@
 
       &:not(:has(+ .boxed)) {
         // border-bottom: 1px solid;
+      }
+    }
+
+    &.testis {
+      > div {
+        border-top: none !important;
       }
     }
   }

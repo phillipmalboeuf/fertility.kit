@@ -73,11 +73,13 @@
 
       justify-content: space-between;
       align-items: center;
-      transition: box-shadow 333ms;
+      transition: box-shadow 333ms, padding 333ms;
 
       &.scrolled {
         background-color: var(--color);
         box-shadow: 0 4px 4px $muted;
+        padding-top: $s0;
+        padding-bottom: $s-1;
       }
     }
 
