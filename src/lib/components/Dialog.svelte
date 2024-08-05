@@ -32,7 +32,7 @@
   {/if}
 
   {#if $page.state.href.includes(`/explore/`)}
-  <dialog transition:fly={{ opacity: 1, x: '-110%', duration: 666 }}>
+  <dialog transition:fly={{ opacity: 1, x: '110%', duration: 666 }}>
     <svelte:component this={ExploreItemPage} data={$page.state.data} />
   </dialog>
   {/if}
@@ -60,12 +60,12 @@
 
     color: currentColor;
     background-color: $light;
-    will-change: transform;
+    // will-change: transform;
 
-    dialog {
-      top: 0;
-      right: 0;
-    }
+    // dialog {
+    //   top: 0;
+    //   right: 0;
+    // }
 
     &.flying {
       dialog {
