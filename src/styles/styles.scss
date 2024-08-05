@@ -46,6 +46,15 @@ body {
 	@media (max-width: $mobile) {
     // font-size: $mobile_base;
   }
+
+	.background {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100vw;
+		height: 100lvh;
+		z-index: -1;
+	}
 }
 
 ::selection {

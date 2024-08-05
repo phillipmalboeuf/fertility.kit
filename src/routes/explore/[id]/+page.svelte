@@ -7,6 +7,7 @@
 
   import Playlist from '$lib/components/Playlist.svelte'
   import Text from '$lib/components/Text.svelte'
+  import Media from '$lib/components/Media.svelte'
   
   import type { PageData } from './$types'
   let { data }: { data: PageData } = $props()
@@ -22,7 +23,7 @@
   }
 </script>
 
-<section class="padded" class:dialog>
+<section class:padded={dialog} class:dialog class:padded--thick={!dialog}>
   <nav class="flex">
     <a class="button button--none" href="/explore" onclick={dialogClick}><svg width="10" height="10" viewBox="0 0 10 10"><path d="M9.69141 4.53125V5.46875H1.79883L5.57227 9.24219L4.9043 9.9043L0 5L4.9043 0.0957031L5.57227 0.757812L1.79883 4.53125H9.69141Z"/></svg>
 Back</a>
@@ -38,6 +39,12 @@ Back</a>
   </article>
 </section>
 
+{#if !dialog && data.page.fields.background}
+<figure class="background">
+  <Media media={data.page.fields.background} eager />
+</figure>
+{/if}
+
 <style lang="scss">
   section {
     &.dialog {
@@ -45,6 +52,23 @@ Back</a>
 
       @media (max-width: $mobile) {
         margin: calc($s0 * -1);
+      }
+    }
+
+    &:not(.dialog) {
+      nav {
+        border-top: 1px solid $grey;
+        border-left: 1px solid $grey;
+        border-right: 1px solid $grey;
+        border-top-left-radius: $s0;
+        border-top-right-radius: $s0;
+      }
+
+      article {
+        border: 1px solid $grey;
+        border-top: none;
+        border-bottom-left-radius: $s0;
+        border-bottom-right-radius: $s0;
       }
     }
   }
@@ -58,9 +82,15 @@ Back</a>
     border-bottom: 1px solid;
 
     font-family: $heading_font;
+    max-width: $max * 0.333;
+    margin: 0 auto;
   }
 
   article {
+    background-color: $light;
+    max-width: $max * 0.333;
+    margin: 0 auto;
+
     h6 {
       font-weight: normal;
       font-size: $s-1;

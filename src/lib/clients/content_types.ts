@@ -82,6 +82,7 @@ export interface TypePageFields {
     id: EntryFieldTypes.Symbol;
     step?: EntryFieldTypes.Symbol<"1" | "2" | "3" | "4">;
     color?: EntryFieldTypes.Symbol;
+    background?: EntryFieldTypes.AssetLink;
     content?: EntryFieldTypes.Array<EntryFieldTypes.EntryLink<TypeGallerySkeleton | TypeListSkeleton | TypeNavigationSkeleton | TypePlaylistSkeleton | TypeTextSkeleton>>;
 }
 

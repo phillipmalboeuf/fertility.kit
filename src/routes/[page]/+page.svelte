@@ -28,6 +28,10 @@
   section {
     transition: background-color 666ms;
 
+    &:global(:has(+ .background)) {
+      background-color: transparent !important;
+    }
+
     &.boxed {
       // border-top: 1px solid;
       // border-bottom: 1px solid;

@@ -15,7 +15,7 @@
   } = $props()
 </script>
 
-<section id={item.fields.id} class:boxed={item.fields.boxed} >
+<section class:boxed={item.fields.boxed} >
   {#if item.fields.media?.length}
   {#each item.fields.media as media, i}
   <figure>
@@ -23,6 +23,8 @@
   </figure>
   {/each}
   {/if}
+
+  <a id={item.fields.id} />
 
   {#if item.fields.subtitle}
   <h6>{item.fields.subtitle}</h6>

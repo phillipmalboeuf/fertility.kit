@@ -93,7 +93,7 @@
   :global(.slider__container) {
     list-style: none;
     display: flex;
-    align-items: flex-start;
+    align-items: stretch;
     transition: height 333ms;
     padding: 0;
   }

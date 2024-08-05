@@ -141,6 +141,10 @@
       }
     }
 
+    // &:not(.slider) {
+      
+    // }
+
     &.slider {
       // @media (max-width: $mobile) {
       //   display: none;
@@ -148,8 +152,11 @@
     }
 
     &:not(.dialog):not(.slider) {
+      max-width: $max * 0.333;
+      margin: 0 auto;
       border: 1px solid $grey;
       border-radius: $s0;
+      background-color: $light;
 
       details {
         border-top-left-radius: $s0;

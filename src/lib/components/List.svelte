@@ -51,7 +51,7 @@
         {/if}
         {:else if isTypeAdvisor(i)}
         <a href={i.fields.link} class="flex flex--gapped flex--bottom advisor" target="_blank" rel="external">
-          <h3 class="col col--6of12 col--mobile--12of12 h1 h--alt">{i.fields.name}</h3>
+          <h3 class="col col--6of12 col--mobile--12of12 h2 h--alt">{i.fields.name}</h3>
           <h6 class="col col--6of12 col--mobile--12of12">{i.fields.position} <Star /> <br>{i.fields.certifications}</h6>
         </a>
         {/if}
@@ -148,6 +148,12 @@
             margin: $s0 0;
           }
         }
+
+        // &:last-of-type {
+        //   .advisor {
+        //     border-bottom: none;
+        //   }
+        // }
 
         .advisor {
           padding: $s-3 0;

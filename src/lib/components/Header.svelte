@@ -40,7 +40,7 @@
   </label>
   <nav class="flex flex--column" onclick={() => menu = false}>
     {#each navigation.fields.links as link}
-    <Link {link} className={$page.url.pathname === link.fields.destination ? 'active' : undefined} />
+    <Link {link} className={$page.url.pathname.includes(link.fields.destination) ? 'active' : undefined} />
     {/each}
 
     <nav class="flex flex--tight_gapped flex--column work">
