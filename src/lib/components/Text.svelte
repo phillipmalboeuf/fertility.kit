@@ -24,10 +24,8 @@
   {/each}
   {/if}
 
-  <a id={item.fields.id} />
-
   {#if item.fields.subtitle}
-  <h6>{item.fields.subtitle}</h6>
+  <h6 id={item.fields.id}>{item.fields.subtitle}</h6>
   <hr>
   {/if}
 
@@ -128,7 +126,7 @@
       }
 
       figure + h6.split {
-        margin-top: calc($s4 * -1);
+        margin-top: calc($s5 * -1);
 
         @media (max-width: $mobile) {
           margin-top: calc(($s2 * -1) + 2px);
