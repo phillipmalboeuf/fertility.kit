@@ -37,7 +37,7 @@
     {/if}
     <ol class:col--6of12={item.fields.media?.length} class="col col--mobile--12of12 list--nostyle flex" class:flex--thick_gapped={!item.fields.items?.find(i => isTypeAdvisor(i))} class:flex--gapped={item.fields.items?.find(i => isTypeAdvisor(i))}>
       {#each item.fields.items as i}
-      <li class="col col--4of12 col--mobile--12of12" class:col--6of12={item.fields.media?.length} class:col--12of12={isTypeAdvisor(i)} class:mid={isTypeText(i) && i.fields.bigger}>
+      <li class="col col--4of12 col--mobile--12of12" class:col--6of12={item.fields.media?.length} class:col--12of12={isTypeAdvisor(i)}>
         {#if isTypeText(i)}
         {#if item.fields.media?.length}
         <h6>{i.fields.title}</h6>

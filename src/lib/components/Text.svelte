@@ -42,7 +42,7 @@
   {/if}
   {/if}
   {#if item.fields.body}
-  <main class:full class:mid={item.fields.bigger} class="columns-{item.fields.columns || 2}">
+  <main class:full class="columns-{item.fields.columns || 2}">
     <Rich body={item.fields.body} />
   </main>
   {/if}

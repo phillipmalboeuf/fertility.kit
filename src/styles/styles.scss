@@ -151,7 +151,8 @@ h6,
 p {
 	white-space: pre-line;
 
-	.mid & {
+	.mid &,
+	blockquote & {
 		font-size: $s1;
 		line-height: 1.2;
 	}
@@ -159,6 +160,10 @@ p {
 	a {
 		text-decoration: underline;
 	}
+}
+
+blockquote {
+	padding: 0;
 }
 
 small {
