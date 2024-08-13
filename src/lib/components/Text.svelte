@@ -47,9 +47,20 @@
   {/if}
   {/if}
   {#if item.fields.body}
+  {#if item.fields.rightColumn?.content.length}
+  <main class:full={true} class="flex flex--thick_gapped">
+    <div class="col col--8of12 col--mobile--12of12">
+      <Rich body={item.fields.body} />
+    </div>
+    <div class="col col--4of12 col--mobile--12of12">
+      <Rich body={item.fields.rightColumn} />
+    </div>
+  </main>
+  {:else}
   <main class:full class="columns-{item.fields.columns || 2}">
     <Rich body={item.fields.body} />
   </main>
+  {/if}
   {/if}
 
   {#snippet icon()}
@@ -151,6 +162,14 @@
 
     main {
 
+      &.flex {
+        --gap: #{$s5};
+
+        @media (max-width: $mobile) {
+          --gap: 0;
+        }
+      }
+
       &:not(.full):not(.columns-1) {
         @media (min-width: $mobile) {
           column-count: 2;
@@ -158,7 +177,24 @@
           
           &.columns-3 {
             column-count: 3;
-            column-gap: $s3;
+
+            &:global(:has(blockquote)) {
+              // column-count: unset;
+              // display: grid;
+              // grid-auto-flow: column dense;
+              // grid-template-rows: repeat(3, 1fr);
+              
+              // column-gap: $s4;
+
+              // :global(p),
+              // :global(blockquote) {
+              //   margin-top: 0;
+              // }
+
+              // :global(blockquote) {
+              //   // grid-row: span 2;
+              // }
+            }
           }
 
           :global(*) {

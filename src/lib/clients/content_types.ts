@@ -148,6 +148,7 @@ export interface TypeTextFields {
     mobileMedia?: EntryFieldTypes.Array<EntryFieldTypes.AssetLink>;
     columns?: EntryFieldTypes.Symbol<"1" | "2" | "3">;
     body?: EntryFieldTypes.RichText;
+    rightColumn?: EntryFieldTypes.RichText;
     more?: EntryFieldTypes.Array<EntryFieldTypes.EntryLink<TypePlaylistSkeleton | TypeSliderSkeleton | TypeTextSkeleton>>;
     links?: EntryFieldTypes.Array<EntryFieldTypes.EntryLink<TypeLinkSkeleton>>;
     navigation?: EntryFieldTypes.EntryLink<TypeNavigationSkeleton>;
