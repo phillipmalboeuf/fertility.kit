@@ -169,7 +169,8 @@
         }
       }
 
-      :global(p) {
+      :global(p),
+      :global(blockquote) {
         margin: $s1 0;
 
         &:first-child {
