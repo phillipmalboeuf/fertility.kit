@@ -89,6 +89,12 @@
       @media (min-width: $mobile) {
         margin-bottom: $s0;
       }
+
+      @media (max-width: $mobile) {
+        :global(svg.index) {
+          width: 115px;
+        }
+      }
     }
 
     > label {

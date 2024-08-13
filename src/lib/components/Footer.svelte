@@ -61,6 +61,8 @@
     padding-bottom: $s3;
 
     :global(svg) {
+      width: 115px;
+      
       @media (max-width: $mobile) {
         width: 115px;
       }
