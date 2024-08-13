@@ -8,8 +8,9 @@
   import Link from './Link.svelte'
   import Star from './Star.svelte'
 
-  let { item, full, small }: {
+  let { item, full, small, first }: {
     item: Entry<TypeTextSkeleton, "WITHOUT_UNRESOLVABLE_LINKS">
+    first?: boolean
     full?: boolean
     small?: boolean
   } = $props()
@@ -37,7 +38,11 @@
   {#if small}
   <h5>{item.fields.title}</h5>
   {:else}
+  {#if first}
   <h2>{item.fields.title}</h2>
+  {:else}
+  <h3>{item.fields.title}</h3>
+  {/if}
   {/if}
   {/if}
   {/if}
@@ -80,6 +85,7 @@
   section {
 
     h2,
+    h3,
     h5,
     h6:not(:has(+ hr)),
     figure,
@@ -95,7 +101,8 @@
       margin-top: $s0;
     }
 
-    h2 {
+    h2,
+    h3 {
       @media (min-width: $mobile) {
         padding-right: $s7;
       }

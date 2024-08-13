@@ -118,13 +118,13 @@ h3,
 	line-height: 1.05;
 
 	@media (max-width: $mobile) {
-    font-size: $s3;
+    font-size: calc($s3 - 2px);
   }
 }
 
 h4,
 .h4 {
-	font-size: $s3;
+	font-size: calc($s3 - 2px);
 	line-height: 1.05;
 
 	// @media (max-width: $mobile) {
