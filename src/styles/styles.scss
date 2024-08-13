@@ -173,6 +173,11 @@ blockquote {
 
 small {
 	font-size: $s-1;
+
+	&.sub,
+	&.sup {
+		font-size: calc($s-1 - 2px);
+	}
 }
 
 a {
