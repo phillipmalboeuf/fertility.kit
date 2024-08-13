@@ -49,10 +49,10 @@
   {#if item.fields.body}
   {#if item.fields.rightColumn?.content.length}
   <main class:full={true} class="flex flex--thick_gapped">
-    <div class="col col--8of12 col--mobile--12of12">
+    <div class="col col--7of12 col--mobile--12of12">
       <Rich body={item.fields.body} />
     </div>
-    <div class="col col--4of12 col--mobile--12of12">
+    <div class="col col--5of12 col--mobile--12of12">
       <Rich body={item.fields.rightColumn} />
     </div>
   </main>
