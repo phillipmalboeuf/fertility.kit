@@ -155,6 +155,11 @@ p {
 	blockquote & {
 		font-size: $s1;
 		line-height: 1.2;
+
+		@media (max-width: $mobile) {
+			font-size: calc($s1 - 2px);
+			// line-height: 1.2;
+		}
 	}
 
 	a {
