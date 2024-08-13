@@ -174,6 +174,8 @@
 
       summary {
         font-family: $heading_font;
+        font-size: calc($s0 - 2px);
+        font-weight: bold;
         cursor: pointer;
         
         span {
@@ -201,12 +203,17 @@
 
     nav {
       font-family: $heading_font;
+      margin-bottom: $s-1;
 
       h6 {
         opacity: 0.4;
+        font-size: calc($s-1);
+        margin-bottom: $s-1;
       }
 
       a {
+        font-weight: bold;
+        font-size: calc($s-1);
         border-bottom: 1.5px solid transparent;
 
         &:hover,
@@ -266,7 +273,9 @@
           }
 
           h5 {
-            font-size: $s0;
+            font-size: calc($s0 - 2px);
+            font-weight: bold;
+            margin-top: $s0;
           }
 
           figure {
@@ -276,7 +285,6 @@
 
           figure + h5 {
             flex: 1;
-            margin-top: $s0;
           }
 
           @media (min-width: $mobile) {
