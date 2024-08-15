@@ -144,6 +144,10 @@
         padding: calc($s0) calc($s5);
         border-bottom: 1px solid;
 
+        @media (max-height: $mobile) {
+          margin: calc($s5 * -1) calc($s5 * -1) $s5;
+        }
+
         @media (max-width: $mobile) {
           margin: calc($s2 * -1) calc($s1 * -1) $s1;
           padding: calc($s0) calc($s1);

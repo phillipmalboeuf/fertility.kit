@@ -136,6 +136,10 @@
     &.dialog {
       margin: calc($s7 * -1) calc($s5 * -1);
 
+      @media (max-height: $mobile) {
+        margin: calc($s5 * -1) calc($s5 * -1);
+      }
+
       @media (max-width: $mobile) {
         margin: calc($s2 * -1) calc($s1 * -1);
       }
