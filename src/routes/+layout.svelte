@@ -47,7 +47,7 @@
 	main {
 		// width: 75vw;
 		// margin-left: auto;
-		min-height: 100vh;
+		// min-height: 100vh;
 
 		@media (min-width: $mobile) {
 			:global(> section) {

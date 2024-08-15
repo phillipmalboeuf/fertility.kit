@@ -108,6 +108,13 @@
       }
     }
 
+    figure {
+      :global(img),
+      :global(video) {
+        max-height: 75vh;
+      }
+    }
+
     hr {
       margin-top: $s0;
     }

@@ -498,6 +498,10 @@ strong,
 	.padded--thick {
 		padding: ($s7) ($s5);
 
+		@media (max-height: $mobile) {
+			padding: ($s5) ($s5);
+		}
+
 		@media (max-width: $mobile) {
 			padding: ($s2) ($s1);
 		}
