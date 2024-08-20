@@ -29,11 +29,38 @@
     </li>
     {/each}
   </ol>
+
+  {#if item.fields.link}
+  <nav>
+    <a href={item.fields.link} rel="external" target="_blank">{item.fields.linkLabel || item.fields.link}</a>
+  </nav>
+  {/if}
 </section>
 
 <style lang="scss">
   figure {
     margin-bottom: $s3;
+  }
+
+  nav {
+    margin-top: $s3;
+    font-family: $heading_font;
+    font-weight: bold;
+
+    @media (min-width: $mobile) {
+      font-size: $s-1;
+    }
+
+    a {
+      padding: 0.2em 0;
+      border-bottom: 1.5px solid;
+      transition: opacity 333ms;
+
+      &:hover,
+      &:focus {
+        opacity: 0.5;
+      }
+    }
   }
   
   ol {
