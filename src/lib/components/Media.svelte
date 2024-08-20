@@ -26,7 +26,7 @@
   }
 </script>
 
-{#if media}
+{#if media?.fields.file}
 {#if media.fields.file.contentType.startsWith('video/')}
 <!-- svelte-ignore a11y-media-has-caption -->
 <video class:rounded src="{cdn(media.fields.file.url)}" controls autoplay={eager} muted={eager} loop={eager}></video>
