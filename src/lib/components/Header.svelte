@@ -77,7 +77,8 @@
 
       &.scrolled {
         background-color: var(--color);
-        box-shadow: 0 4px 4px $muted;
+        // box-shadow: 0 4px 4px $muted;
+        border-bottom: 1px solid;
         padding-top: $s0;
         padding-bottom: $s-1;
       }
