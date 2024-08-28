@@ -73,10 +73,10 @@
 
       justify-content: space-between;
       align-items: center;
-      transition: box-shadow 333ms, padding 333ms;
+      transition: background-color 333ms, box-shadow 333ms, padding 333ms;
 
       &.scrolled {
-        background-color: var(--color);
+        background-color: var(--color, #fff);
         // box-shadow: 0 4px 4px $muted;
         border-bottom: 1px solid;
         padding-top: $s0;

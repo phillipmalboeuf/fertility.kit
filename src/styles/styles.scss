@@ -54,6 +54,11 @@ body {
 		width: 100vw;
 		height: 100lvh;
 		z-index: -1;
+
+		img {
+			height: 100lvh;
+			object-fit: cover;
+		}
 	}
 }
 
