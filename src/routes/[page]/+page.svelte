@@ -13,7 +13,7 @@
 <section class:testis={data.page.fields.id === 'testimonials'} class:boxed={(isTypeText(item) || isTypeList(item)) && item.fields.boxed} style:background-color={(isTypeText(item) || isTypeList(item)) ? item.fields.color : isTypeGallery(item) ? '#fff' : undefined}>
   <div class="padded--thick">
     {#if isTypeText(item)}
-    <Text {item} full={['disclaimer'].includes(data.page.fields.id)} />
+    <Text {item} full={['disclaimer'].includes(data.page.fields.id)} first={i === 0} />
     {:else if isTypeList(item)}
     <List {item} full={['disclaimer'].includes(data.page.fields.id)} />
     {:else if isTypeGallery(item)}
