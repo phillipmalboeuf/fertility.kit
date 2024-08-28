@@ -52,7 +52,7 @@
         {:else if isTypeAdvisor(i)}
         <a href={i.fields.link} class="flex flex--gapped flex--bottom advisor" target="_blank" rel="external">
           <h3 class="col col--6of12 col--mobile--12of12 h2 h--alt">{i.fields.name}</h3>
-          <h6 class="col col--6of12 col--mobile--12of12">{i.fields.position} <Star /> <br>{i.fields.certifications}</h6>
+          <h6 class="col col--6of12 col--mobile--12of12">{i.fields.position} <span><Star /> {@html i.fields.certifications?.replaceAll(' ', '&nbsp;')}<span></h6>
         </a>
         {/if}
       </li>
@@ -175,6 +175,12 @@
 
             @media (max-width: $mobile) {
               font-size: $s-1;
+            }
+
+            span {
+              display: inline-flex;
+              align-items: center;
+              flex-wrap: nowrap;
             }
           }
 
