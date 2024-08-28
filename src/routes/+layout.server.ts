@@ -10,6 +10,14 @@ export const load = async ({ request, cookies }) => {
     content.getTags()
   ])
 
+  const orders = {
+    'research': 98,
+    'hormone-health': 0,
+    'tipsTricks': 0,
+    'fertilityTreatments': -1,
+    'playlist': 99,
+  }
+
   return {
     navigations: {
       ...navigations.items.reduce((navs, nav) => {
@@ -19,7 +27,7 @@ export const load = async ({ request, cookies }) => {
         }
       }, {} as {[id: string]: Entry<TypeNavigationSkeleton, 'WITHOUT_UNRESOLVABLE_LINKS'>}),
     },
-    tags: tags.items.reduce((ts, tag) => {
+    tags: tags.items.sort((a, b) => (orders[a.sys.id] || 0) - (orders[b.sys.id] || 0)).reduce((ts, tag) => {
       return {
         ...ts,
         [tag.sys.id]: tag
