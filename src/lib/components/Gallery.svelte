@@ -80,7 +80,7 @@
   </details>
   {/if}
 
-  <Slider disabled={!preview} slidesPerView={2.25}>
+  <Slider disabled={!preview} autoplay slidesPerView={2.25}>
     <ol class="list--nostyle {preview ? 'slider__container' : 'flex flex--column'}{format === 'feed' ? ' flex--gapped' : ''}">
       <!-- {#each item.fields.content.filter(i => !$page.url.searchParams.get('tag') || i.metadata.tags.find(t => t.sys.id === $page.url.searchParams.get('tag'))) as i} -->
       {#each item.fields.content as i}

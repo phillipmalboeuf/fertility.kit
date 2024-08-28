@@ -50,7 +50,7 @@
 		// min-height: 100vh;
 
 		@media (min-width: $mobile) {
-			:global(> section) {
+			:global(> section:not(:has(+ .background))) {
 				padding-left: calc(25% - ($s4 / 2));
 			}
 		}

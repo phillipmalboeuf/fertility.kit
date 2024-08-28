@@ -29,6 +29,7 @@
     transition: background-color 666ms;
 
     &:global(:has(+ .background)) {
+      padding-left: 0 !important;
       background-color: transparent !important;
     }
 
