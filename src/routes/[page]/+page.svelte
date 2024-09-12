@@ -10,7 +10,7 @@
 
 {#if data.page.fields.content}
 {#each data.page.fields.content as item, i}
-<section class:testis={data.page.fields.id === 'testimonials'} class:boxed={(isTypeText(item) || isTypeList(item)) && item.fields.boxed} style:background-color={(isTypeText(item) || isTypeList(item)) ? item.fields.color : isTypeGallery(item) ? '#fff' : undefined}>
+<section class:testis={data.page.fields.id === 'testimonials'} class:gallery={isTypeGallery(item)} class:boxed={(isTypeText(item) || isTypeList(item)) && item.fields.boxed} style:background-color={(isTypeText(item) || isTypeList(item)) ? item.fields.color : isTypeGallery(item) ? '#fff' : undefined}>
   <div class="padded--thick">
     {#if isTypeText(item)}
     <Text {item} full={['disclaimer'].includes(data.page.fields.id)} first={i === 0} />
@@ -26,7 +26,7 @@
 
 <style lang="scss">
   section {
-    transition: background-color 666ms;
+    transition: background-color 1333ms;
 
     &:global(:has(+ .background)) {
       padding-left: 0 !important;

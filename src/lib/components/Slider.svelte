@@ -47,7 +47,7 @@
   loop: true,
   skipSnaps: true,
   ...slidesPerView > 1 ? {
-    align: 'start'
+    // align: 'start'
   } : {}
 }, plugins }}>
   {@render children()}

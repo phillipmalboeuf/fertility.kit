@@ -41,7 +41,7 @@
 <style lang="scss">
 	div {
 		background-color: var(--color);
-		transition: background-color 666ms;
+		transition: background-color 1333ms;
 	}
 
 	main {
@@ -50,7 +50,7 @@
 		// min-height: 100vh;
 
 		@media (min-width: $mobile) {
-			:global(> section:not(:has(+ .background))) {
+			:global(> section:not(:has(+ .background)):not(.gallery)) {
 				padding-left: calc(25% - ($s4 / 2));
 			}
 		}

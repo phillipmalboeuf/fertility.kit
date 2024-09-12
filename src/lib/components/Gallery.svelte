@@ -80,7 +80,7 @@
   </details>
   {/if}
 
-  <Slider disabled={!preview} autoplay slidesPerView={2.25}>
+  <Slider disabled={!preview} autoplay slidesPerView={2.75}>
     <ol class="list--nostyle {preview ? 'slider__container' : 'flex flex--column'}{format === 'feed' ? ' flex--gapped' : ''}">
       <!-- {#each item.fields.content.filter(i => !$page.url.searchParams.get('tag') || i.metadata.tags.find(t => t.sys.id === $page.url.searchParams.get('tag'))) as i} -->
       {#each item.fields.content as i}
@@ -315,10 +315,10 @@
     }
 
     &.slider {
-      margin-right: calc($s3 * -1);
+      margin: calc($s5 * -1);
 
       @media (max-width: $mobile) {
-        margin-right: calc($s0 * -1);
+        margin: calc($s1 * -1);
       }
       
       // :global(.slider) {
