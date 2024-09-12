@@ -315,10 +315,10 @@
     }
 
     &.slider {
-      margin: calc($s5 * -1);
+      margin: 0 calc($s5 * -1);
 
       @media (max-width: $mobile) {
-        margin: calc($s1 * -1);
+        margin: 0 calc($s1 * -1);
       }
       
       // :global(.slider) {
