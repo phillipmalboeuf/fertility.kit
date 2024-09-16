@@ -44,7 +44,7 @@ body {
 	background-color: $light;
 
 	@media (max-width: $mobile) {
-    // font-size: $mobile_base;
+    
   }
 
 	.background {
@@ -94,13 +94,13 @@ h1,
 .h1 {
 	font-size: $s6;
 
-	// @media (max-width: $mobile) {
-  //   font-size: $mobile_base * $mobile_scale * 3;
-  // }
-
 	&.h--alt {
 		letter-spacing: -0.01em;
 	}
+
+	@media (max-width: $max) {
+    font-size: $s4;
+  }
 
 	@media (max-width: $mobile) {
     font-size: $s3;
@@ -112,6 +112,10 @@ h2,
 	font-size: $s5;
 	line-height: 1.05;
 
+	@media (max-width: $max) {
+    font-size: $s4;
+  }
+
 	@media (max-width: $mobile) {
     font-size: $s3;
   }
@@ -122,6 +126,10 @@ h3,
 	font-size: $s4;
 	line-height: 1.05;
 
+	@media (max-width: $max) {
+    font-size: $s2;
+  }
+
 	@media (max-width: $mobile) {
     font-size: calc($s3 - 2px);
   }
@@ -129,12 +137,16 @@ h3,
 
 h4,
 .h4 {
-	font-size: calc($s3 - 2px);
+	font-size: calc($s2);
 	line-height: 1.05;
 
-	// @media (max-width: $mobile) {
-  //   font-size: $mobile_base * $mobile_scale * 1;
-  // }
+	@media (max-width: $max) {
+    font-size: $s1;
+  }
+
+	@media (max-width: $mobile) {
+    font-size: $s1;
+  }
 }
 
 h5,
@@ -142,9 +154,9 @@ h5,
 	font-size: $s1;
 	line-height: 1.1;
 
-	// @media (max-width: $mobile) {
-  //   font-size: $mobile_base * $mobile_scale * 1;
-  // }
+	@media (max-width: $mobile) {
+    font-size: $s0;
+  }
 }
 
 h6,
@@ -161,9 +173,12 @@ p {
 		font-size: $s1;
 		line-height: 1.2;
 
-		@media (max-width: $mobile) {
+		@media (max-width: $max) {
 			font-size: calc($s1 - 2px);
-			// line-height: 1.2;
+		}
+
+		@media (max-width: $mobile) {
+			font-size: $s0;
 		}
 	}
 

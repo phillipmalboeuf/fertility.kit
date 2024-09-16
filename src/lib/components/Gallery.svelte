@@ -230,7 +230,7 @@
 
     .buttons {
       position: absolute;
-      top: 6px;
+      top: 3px;
       right: 0;
       width: auto;
 
