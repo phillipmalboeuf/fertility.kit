@@ -62,12 +62,14 @@
     </div>
     <div class="col col--5of12 col--mobile--12of12">
       <details open={desktop}>
-        <summary class="flex flex--middle flex--gapped"><svg width="33" height="10" viewBox="0 0 33 10">
-<path d="M4.58317 0.209228C2.05424 0.209228 -0.000162214 2.26363 -0.000162325 4.79256C-0.000162436 7.32148 2.05424 9.37589 4.58317 9.37589C7.1121 9.37589 9.1665 7.32707 9.1665 4.79256C9.1665 2.25805 7.11768 0.209228 4.58317 0.209228Z" />
-<path d="M11.9168 4.79256C11.9168 7.32386 13.9689 9.37589 16.5002 9.37589C19.0315 9.37589 21.0835 7.32386 21.0835 4.79256C21.0835 2.26125 19.0315 0.209228 16.5002 0.209228C13.9689 0.209228 11.9168 2.26125 11.9168 4.79256Z" />
-<path d="M33 4.79256C33 2.26363 30.9512 0.209228 28.4167 0.209228C25.8822 0.209228 23.8333 2.25805 23.8333 4.79256C23.8333 7.32707 25.8877 9.37589 28.4167 9.37589C30.9456 9.37589 33 7.32707 33 4.79256Z" /></svg> <h6 class="col">Read More</h6></summary>
+        <summary></summary>
         <Rich body={item.fields.rightColumn} />
       </details>
+      <button onclick={(e) => e.currentTarget.previousElementSibling.toggleAttribute('open')} class="button--none flex flex--middle flex--gapped"><svg width="24" height="7" viewBox="0 0 24 7">
+        <path d="M3 0.26416C1.3447 0.26416 -5.87786e-08 1.60886 -1.31134e-07 3.26416C-2.03489e-07 4.91946 1.3447 6.26416 3 6.26416C4.6553 6.26416 6 4.92311 6 3.26416C6 1.6052 4.65895 0.26416 3 0.26416Z"/>
+        <path d="M8.75 3.26416C8.75 4.92101 10.0931 6.26416 11.75 6.26416C13.4069 6.26416 14.75 4.92101 14.75 3.26416C14.75 1.6073 13.4069 0.26416 11.75 0.26416C10.0931 0.26416 8.75 1.6073 8.75 3.26416Z"/>
+        <path d="M23.5 3.26416C23.5 1.60886 22.159 0.26416 20.5 0.26416C18.841 0.26416 17.5 1.6052 17.5 3.26416C17.5 4.92311 18.8447 6.26416 20.5 6.26416C22.1553 6.26416 23.5 4.92311 23.5 3.26416Z" />
+        </svg> <h6 class="col">Read</h6></button>
     </div>
   </main>
   {:else}
@@ -254,18 +256,41 @@
     }
 
     details {
-      summary {
+      position: relative;
+      width: 100%;
+
+      + button {
+        width: auto;
+
+        @media (min-width: $mobile) {
+          display: none;
+        }
+        
+        h6:after {
+          content: " More";
+        }
+
         h6 {
           margin: 0;
         }
       }
 
       &[open] {
-        summary {
-          display: none;
+        :global(p:nth-child(2)) {
+          margin-top: 0;
+        }
 
-          & + :global(p) {
-            margin-top: 0;
+        + button {
+          h6:after {
+            content: " Less";
+          }
+
+          svg {
+            overflow: visible;
+            path {
+              fill: transparent;
+              stroke: currentColor;
+            }
           }
         }
       }
@@ -277,6 +302,12 @@
 
       h6 {
         margin-bottom: 0;
+
+        @media (max-width: $mobile) {
+          & + div {
+            display: none;
+          }
+        }
       }
 
       :global(a) {

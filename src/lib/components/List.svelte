@@ -52,7 +52,7 @@
         {:else if isTypeAdvisor(i)}
         <a href={i.fields.link} class="flex flex--gapped flex--bottom advisor" target="_blank" rel="external">
           <h3 class="col col--6of12 col--mobile--12of12 h2 h--alt">{i.fields.name}</h3>
-          <h6 class="col col--6of12 col--mobile--12of12">{i.fields.position} <span><Star /> {@html i.fields.certifications?.replaceAll(' ', '&nbsp;')}<span></h6>
+          <h6 class="col col--6of12 col--mobile--12of12">{i.fields.position}<br /><small>{i.fields.certifications}</small><span></h6>
         </a>
         {/if}
       </li>
@@ -167,26 +167,26 @@
           h6 {
             margin-bottom: $s-1;
 
-            @media (min-width: $mobile) {
-              br {
-                display: none;
-              }
-            }
+            // @media (min-width: $mobile) {
+            //   br {
+            //     display: none;
+            //   }
+            // }
 
             @media (max-width: $mobile) {
               font-size: $s-1;
             }
 
-            span {
-              display: inline-flex;
-              align-items: center;
-              flex-wrap: nowrap;
-            }
+            // span {
+            //   display: inline-flex;
+            //   align-items: center;
+            //   flex-wrap: nowrap;
+            // }
           }
 
-          :global(svg) {
-            margin: 0 $s-3;
-          }
+          // :global(svg) {
+          //   margin: 0 $s-3;
+          // }
         }
       }
     }
@@ -207,6 +207,14 @@
         font-weight: 600;
         font-family: $heading_font;
         line-height: 1;
+      }
+    }
+  }
+
+  section#certifications {
+    @media (max-width: $mobile) {
+      li {
+        padding-right: 90px;
       }
     }
   }

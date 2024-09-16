@@ -47,7 +47,7 @@
         border-top: none;
 
         > div {
-          border-top: 1px solid;
+          // border-top: 1px solid;
         }
       }
 
@@ -59,6 +59,12 @@
     &.testis {
       > div {
         border-top: none !important;
+      }
+
+      @media (max-width: $mobile) {
+        :global(blockquote p) {
+          font-size: calc($s0);
+        }
       }
     }
   }
