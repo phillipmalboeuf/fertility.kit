@@ -604,6 +604,12 @@ strong,
 			}
     }
 
+		&.col--4andahalfof12 {
+			$width: math.div(100%, 12) * 4.5;
+			$adjust: calc(var(--gap) / #{math.div(12, 4.5)});
+			width: calc(#{$width} - var(--gap) + #{$adjust});
+		}
+
     @for $i from 1 through 3 { 
       &.col--#{$i}of#{3} {
         $width:  math.div(100%, 3) * $i;

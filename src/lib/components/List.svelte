@@ -30,7 +30,7 @@
   <main class="flex flex--gapped flex--spaced">
     {#if item.fields.media?.length}
     {#each item.fields.media as media, i}
-    <figure class="col col--4of12 col--mobile--12of12">
+    <figure class="col col--4andahalfof12 col--mobile--12of12">
       <Media {media} mobileMedia={item.fields.mobileMedia?.length >= i - 1 ? item.fields.mobileMedia[i] : undefined} />
     </figure>
     {/each}
