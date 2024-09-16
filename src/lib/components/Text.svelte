@@ -323,6 +323,10 @@
         font-family: $heading_font;
         line-height: 1;
 
+        @media (max-width: $max) {
+          font-size: calc($s0 - 2px);
+        }
+
         @media (max-width: $mobile) {
           width: 100%;
         }
