@@ -121,6 +121,16 @@
       }
     }
 
+    &#mystory {
+      figure {
+        margin-bottom: $s0;
+        
+        @media (min-width: $mobile) {
+          margin-top: calc($s1 * -1);
+        }
+      }
+    }
+
     h2,
     h3,
     h5,
