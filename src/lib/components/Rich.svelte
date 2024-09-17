@@ -2,7 +2,7 @@
   import type { Document } from '@contentful/rich-text-types'
   import Media from './Media.svelte'
 
-  let { body }: { body: Document } = $props()
+  let { body, collapsable, open }: { body: Document, collapsable?: boolean, open?: boolean } = $props()
 </script>
 
 {#snippet m(mark)}
@@ -49,7 +49,14 @@
 {:else if node.nodeType === 'heading-6'}
   <h6>{#each node.content as mark}{@render m(mark)}{/each}</h6>
 {:else if node.nodeType === 'paragraph'}
+  {#if collapsable}
+  <details {open}>
+    <summary></summary>
+    <p>{#each node.content as mark}{@render m(mark)}{/each}</p>
+  </details>
+  {:else}
   <p>{#each node.content as mark}{@render m(mark)}{/each}</p>
+  {/if}
 {:else if node.nodeType === 'hr'}
   <hr />
 

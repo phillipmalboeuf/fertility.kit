@@ -73,8 +73,8 @@
     </div>
   </main>
   {:else}
-  <main class:full class="columns-{item.fields.columns || 2}">
-    <Rich body={item.fields.body} />
+  <main class:full class:collapsable={item.fields.collapsable} class="columns-{item.fields.columns || 2}">
+    <Rich body={item.fields.body} collapsable={item.fields.collapsable} open={desktop} />
   </main>
   {/if}
   {/if}
@@ -261,6 +261,47 @@
 
         &:first-child {
           margin-top: 0;
+        }
+      }
+
+
+      &.collapsable {
+        @media (max-width: $mobile) {
+          :global(hr:has(+ h5:first-of-type)) {
+            display: none;
+          }
+
+          :global(details:has(> p:empty)) {
+            display: none;
+          }
+
+          :global(details) {
+            :global(summary) {
+              position: relative;
+              z-index: 1;
+              text-align: right;
+              margin-top: calc($s4 * -1);
+              padding-bottom: calc($s0);
+
+              &:after {
+                content: "+";
+                font-weight: bold;
+                font-family: $heading_font;
+              }
+            }
+          }
+
+          :global(details[open]) {
+            :global(p) {
+              margin-top: 0;
+            }
+
+            :global(summary) {
+              &:after {
+                content: "–";
+              }
+            }
+          }
         }
       }
     }
