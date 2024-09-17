@@ -137,8 +137,10 @@
       }
 
       hr {
-        margin-left: calc($s1 * -1);
-        width: calc(100% + ($s1 * 2));
+        @media (max-width: $mobile) {
+          margin-left: calc($s1 * -1);
+          width: calc(100% + ($s1 * 2));
+        }
       }
     }
 
