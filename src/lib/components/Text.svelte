@@ -128,6 +128,17 @@
         @media (min-width: $mobile) {
           margin-top: calc($s1 * -1);
         }
+
+        @media (max-width: $mobile) {
+          margin-top: calc($s2 * -1);
+          margin-left: calc($s1 * -1);
+          width: calc(100% + ($s1 * 2));
+        }
+      }
+
+      hr {
+        margin-left: calc($s1 * -1);
+        width: calc(100% + ($s1 * 2));
       }
     }
 
@@ -137,6 +148,11 @@
 
       figure {
         order: 1;
+
+        @media (max-width: $mobile) {
+          margin-left: calc($s1 * -1);
+          width: calc(100% + ($s1 * 2));
+        }
       }
 
       main {
