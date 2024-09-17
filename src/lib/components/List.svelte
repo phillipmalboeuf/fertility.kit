@@ -100,6 +100,10 @@
         padding: calc($s0) calc($s5);
         border-bottom: 1px solid;
 
+        @media (max-width: $max) {
+          font-size: calc($s0 - 2px);
+        }
+
         @media (max-height: $mobile) {
           margin: calc($s5 * -1) calc($s5 * -1) $s5;
         }

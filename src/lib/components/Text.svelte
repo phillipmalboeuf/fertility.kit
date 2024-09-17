@@ -124,10 +124,52 @@
     &#mystory {
       figure {
         margin-bottom: $s0;
-        
+
         @media (min-width: $mobile) {
           margin-top: calc($s1 * -1);
         }
+      }
+    }
+
+    &#benefits {
+      display: flex;
+      flex-direction: column;
+
+      figure {
+        order: 1;
+      }
+
+      main {
+        order: 2;
+      }
+
+      h3 {
+        margin-bottom: $s4;
+      }
+
+      h6 {
+        margin: calc($s7 * -1) calc($s5 * -1) $s5;
+        padding: calc($s0) calc($s5);
+        border-bottom: 1px solid;
+
+        & + hr {
+          display: none;
+        }
+
+        @media (max-height: $mobile) {
+          margin: calc($s5 * -1) calc($s5 * -1) $s5;
+        }
+
+        @media (max-width: $mobile) {
+          margin: calc($s2 * -1) calc($s1 * -1) $s1;
+          padding: calc($s0) calc($s1);
+        }
+      }
+    }
+
+    h6 {
+      @media (max-width: $max) {
+        font-size: calc($s0 - 2px);
       }
     }
 
