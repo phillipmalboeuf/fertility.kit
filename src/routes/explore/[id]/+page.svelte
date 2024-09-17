@@ -97,6 +97,21 @@ Back</a>
       margin-bottom: $s0;
     }
 
+    :global(section) {
+      display: flex;
+      flex-direction: column;
+
+      :global(> h5) {
+        order: -1;
+        margin-top: $s1;
+        margin-bottom: $s1;
+      }
+
+      :global(> figure) {
+        margin-bottom: $s1;
+      }
+    }
+
     :global(img),
     :global(video) {
       border-radius: $radius;
