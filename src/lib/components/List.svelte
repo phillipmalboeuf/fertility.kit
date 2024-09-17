@@ -215,10 +215,15 @@
     }
   }
 
-  section#certifications {
+  section#certifications,
+  section#affiliations {
     @media (max-width: $mobile) {
       li {
         padding-right: 90px;
+
+        :global(p) {
+          margin-top: 8px;
+        }
       }
     }
   }
