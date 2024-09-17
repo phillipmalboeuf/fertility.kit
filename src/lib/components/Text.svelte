@@ -24,7 +24,7 @@
   })
 </script>
 
-<section class:boxed={item.fields.boxed} >
+<section class:boxed={item.fields.boxed} id={item.fields.id}>
   {#if item.fields.media?.length}
   {#each item.fields.media as media, i}
   <figure>
@@ -110,6 +110,16 @@
 
 <style lang="scss">
   section {
+
+    &#home {
+      main {
+        :global(h6) {
+          @media (min-width: $mobile) {
+            padding-right: 5vw;
+          }
+        }
+      }
+    }
 
     h2,
     h3,
