@@ -353,12 +353,11 @@
 
       h6 {
         margin-bottom: 0;
+      }
 
-        @media (max-width: $mobile) {
-          & + div {
-            display: none;
-          }
-        }
+      @media (max-width: $mobile) {
+        --gap: #{$s0} !important;
+        margin-bottom: $s0;
       }
 
       :global(a) {
