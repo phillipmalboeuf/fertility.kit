@@ -50,7 +50,7 @@
   <h6>{#each node.content as mark}{@render m(mark)}{/each}</h6>
 {:else if node.nodeType === 'paragraph'}
   {#if collapsable}
-  <details name="accordeon" {open}>
+  <details name={!open ? "accordeon" : undefined} {open}>
     <summary></summary>
     <p>{#each node.content as mark}{@render m(mark)}{/each}</p>
   </details>
