@@ -52,7 +52,7 @@
         {:else if isTypeAdvisor(i)}
         <a href={i.fields.link} class="flex flex--gapped flex--bottom advisor" target="_blank" rel="external">
           <h3 class="col col--6of12 col--mobile--12of12 h2 h--alt">{i.fields.name}</h3>
-          <h6 class="col col--6of12 col--mobile--12of12">{i.fields.position}<br /><small>{i.fields.certifications}</small><span></h6>
+          <h6 class="col col--6of12 col--mobile--12of12">{i.fields.position}<br /><strong>{i.fields.certifications}</strong><span></h6>
         </a>
         {/if}
       </li>
@@ -170,6 +170,7 @@
 
           h6 {
             margin-bottom: $s-1;
+            font-size: $s-1;
 
             // @media (min-width: $mobile) {
             //   br {
@@ -179,6 +180,10 @@
 
             @media (max-width: $mobile) {
               font-size: $s-1;
+            }
+
+            strong {
+              font-weight: normal;
             }
 
             // span {
@@ -224,6 +229,7 @@
     @media (max-width: $mobile) {
       li {
         padding-right: 90px;
+        // padding-bottom: 11px;
 
         :global(p) {
           margin-top: 8px;
