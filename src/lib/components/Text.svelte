@@ -47,7 +47,7 @@
   <h5>{item.fields.title}</h5>
   {:else}
   {#if first}
-  <h2>{item.fields.title}</h2>
+  <h1>{item.fields.title}</h1>
   {:else}
   <h3>{item.fields.title}</h3>
   {/if}
@@ -191,7 +191,7 @@
       }
     }
 
-    h2,
+    h1,
     h3,
     h5,
     h6:not(:has(+ hr)),
@@ -215,7 +215,7 @@
       margin-top: $s0;
     }
 
-    h2,
+    h1,
     h3 {
       @media (min-width: $mobile) {
         padding-right: $s7;

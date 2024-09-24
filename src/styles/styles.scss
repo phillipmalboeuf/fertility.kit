@@ -162,7 +162,11 @@ h5,
 h6,
 .h6 {
 	font-size: $s0;
-	line-height: 1.1;
+	line-height: 1.33;
+
+	@media (max-width: $max) {
+    font-size: calc($s0 - 2px);
+  }
 }
 
 p {
@@ -173,11 +177,11 @@ p {
 		font-size: $s1;
 		line-height: 1.2;
 
-		@media (max-width: $max) {
-			font-size: calc($s1 - 2px);
-		}
+		// @media (max-width: $max) {
+		// 	font-size: calc($s1 - 2px);
+		// }
 
-		@media (max-width: $mobile) {
+		@media (max-width: $max) {
 			font-size: $s0;
 		}
 	}

@@ -19,7 +19,7 @@
   {#if item.fields.media?.length || item.fields.items?.find(i => isTypeAdvisor(i))}
   <h6>{item.fields.title}</h6>
   {:else}
-  <h2>{item.fields.title}</h2>
+  <h1>{item.fields.title}</h1>
   {/if}
   {/if}
 
@@ -42,7 +42,7 @@
         {#if item.fields.media?.length}
         <h6>{i.fields.title}</h6>
         {:else}
-        <h4>{i.fields.title}</h4>
+        <h3>{i.fields.title}</h3>
         {/if}
         {#if i.fields.body}
         <Rich body={i.fields.body} />
@@ -89,7 +89,7 @@
 <style lang="scss">
   section {
 
-    > h2,
+    > h1,
     > h6 {
       margin-bottom: $s5;
     }
