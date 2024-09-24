@@ -100,10 +100,14 @@
     <h6 class="col col--5of12 col--mobile--12of12">{item.fields.navigation.fields.title}</h6>
     <div class="col col--1of12"></div>
     {/if}
-
-    {#each item.fields.navigation.fields.links as link}
-    <Link {link} more={icon} />
-    {/each}
+    
+    <div class="col col--mobile--12of12">
+      <div class="flex flex--thick_gapped">
+      {#each item.fields.navigation.fields.links as link}
+      <Link {link} more={icon} />
+      {/each}
+      </div>
+    </div>
   </nav>
   {/if}
 </section>
@@ -419,6 +423,7 @@
 
     nav {
       align-items: flex-end;
+      // flex-wrap: nowrap;
       margin-top: $s4;
 
       h6 {
